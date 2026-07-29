@@ -1,148 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate ARK Color Combos List</title>
-    <style>
-        :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #e0e0e0;
-            --accent-color: #bb86fc;
-            --border-color: #333;
-            --input-bg: #2d2d2d;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        h1 {
-            text-align: center;
-            color: var(--accent-color);
-            margin-bottom: 5px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #aaa;
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-        }
-        .search-box {
-            width: 100%;
-            padding: 12px 15px;
-            font-size: 1rem;
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-        }
-        .search-box:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-        }
-        .card h3 {
-            margin-top: 0;
-            color: var(--accent-color);
-        }
-        .notes-banner {
-            background-color: #2a2438;
-            border-left: 4px solid var(--accent-color);
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-        }
-        .color-tag {
-            display: inline-block;
-            background-color: #333;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            margin-right: 5px;
-            margin-bottom: 5px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARK Color Combinations</title>
+<!-- Import Bitcount Prop Double and Share Tech Mono from Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg-gradient: linear-gradient(rgba(5, 7, 10, 0.82), rgba(3, 5, 7, 0.92)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9Xi2j-FhpzfapkiCSM1sYuQQWjZFGFLlaA7yCsRG3RkT-Qo6iUNGc74o&s=10');
+    --text-color: #e0e0e0;
+    --header-color: #f0f0f0;
+    --container-bg: rgba(10, 12, 15, 0.3);
+    --container-border: rgba(255, 255, 255, 0.2);
+    --table-header-bg: rgba(15, 18, 22, 0.85);
+    --row-even: rgba(255, 255, 255, 0.03);
+    --row-hover: rgba(255, 255, 255, 0.1);
+    --input-bg: rgba(10, 12, 15, 0.6);
+    --btn-bg: rgba(15, 18, 22, 0.7);
+    --btn-text: #c0c5cd;
+    --accent-color: #00ffaa;
+  }
+
+  body.light-theme {
+    --bg-gradient: linear-gradient(rgba(240, 242, 245, 0.9), rgba(220, 225, 230, 0.95)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9Xi2j-FhpzfapkiCSM1sYuQQWjZFGFLlaA7yCsRG3RkT-Qo6iUNGc74o&s=10');
+    --text-color: #212529;
+    --header-color: #111315;
+    --container-bg: rgba(255, 255, 255, 0.7);
+    --container-border: rgba(0, 0, 0, 0.15);
+    --table-header-bg: rgba(220, 225, 230, 0.9);
+    --row-even: rgba(0, 0, 0, 0.03);
+    --row-hover: rgba(0, 0, 0, 0.08);
+    --input-bg: rgba(255, 255, 255, 0.8);
+    --btn-bg: rgba(230, 235, 240, 0.9);
+    --btn-text: #33383e;
+    --accent-color: #007755;
+  }
+
+  body {
+    font-family: 'Share Tech Mono', monospace, sans-serif;
+    background: var(--bg-gradient);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-color);
+    margin: 0;
+    padding: 15px;
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  h1 { 
+    text-align: center; 
+    color: var(--header-color); 
+    font-family: 'Bitcount Prop Double', sans-serif;
+    text-transform: uppercase; 
+    letter-spacing: 4px; 
+    font-size: 30px;
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.4), 2px 2px 6px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--container-border);
+    padding-bottom: 12px;
+  }
+  .controls-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  #searchBox {
+    width: 100%;
+    padding: 12px 15px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid var(--container-border);
+    background-color: var(--input-bg);
+    backdrop-filter: blur(4px);
+    color: var(--text-color);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 16px;
+    outline: none;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+  }
+  #searchBox::placeholder {
+    color: #8892b0;
+  }
+  .filter-buttons {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+  }
+  .filter-btn {
+    flex: 1;
+    padding: 9px 2px;
+    background-color: var(--btn-bg);
+    border: 1px solid var(--container-border);
+    color: var(--btn-text);
+    border-radius: 6px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(0, 255, 170, 0.2);
+  }
+  .action-row {
+    display: flex;
+    gap: 8px;
+  }
+  .toggle-btn, .theme-btn {
+    flex: 1;
+    padding: 10px;
+    background-color: var(--btn-bg);
+    border: 1px solid var(--container-border);
+    color: var(--accent-color);
+    border-radius: 6px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+  }
+  .toggle-btn:hover, .theme-btn:hover {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
+  }
+  .stats-counter {
+    font-size: 13px;
+    color: var(--btn-text);
+    margin-bottom: 10px;
+    text-align: right;
+    letter-spacing: 1px;
+  }
+  .guide-container {
+    background-color: var(--container-bg);
+    border-radius: 12px;
+    border: 1px solid var(--container-border);
+    padding: 12px 15px;
+    backdrop-filter: blur(4px);
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  }
+  .guide-header {
+    cursor: pointer;
+    color: var(--accent-color);
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .guide-content {
+    display: none;
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-color);
+    border-top: 1px solid var(--container-border);
+    padding-top: 8px;
+  }
+  .guide-content.show {
+    display: block;
+  }
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    background-color: var(--container-bg); 
+    backdrop-filter: blur(4px); 
+    border: 1px solid var(--container-border);
+    margin-bottom: 25px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    text-align: center;
+    min-width: 600px;
+  }
+  th {
+    background-color: var(--table-header-bg);
+    color: var(--header-color);
+    padding: 14px 10px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    border-bottom: 2px solid var(--container-border);
+    text-transform: uppercase;
+  }
+  td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--container-border);
+    vertical-align: middle;
+  }
+  tr:nth-child(even) {
+    background-color: var(--row-even); 
+  }
+  tr:nth-child(odd) {
+    background-color: transparent; 
+  }
+  tr:hover {
+    background-color: var(--row-hover); 
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  .color-block {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    color: black;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.4);
+    margin: 4px 0;
+    width: 85%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .dark-text { 
+    color: #ffffff; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.9); 
+  }
+  .combo-ids, .combo-name {
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .combo-ids:hover, .combo-name:hover {
+    color: var(--accent-color) !important;
+  }
+  .combo-ids { 
+    color: var(--btn-text); 
+    font-weight: 800; 
+    font-size: 16px;
+  }
+  .combo-name {
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--header-color);
+    font-size: 16px;
+  }
+  .alt-name {
+    color: var(--btn-text);
+    font-style: italic;
+  }
+  .variant-note {
+    font-size: 11px;
+    color: #00ffaa;
+    margin-top: 4px;
+    font-style: italic;
+  }
+  /* Notes Section Styling */
+  .notes-container {
+    background-color: var(--container-bg);
+    border-radius: 12px;
+    border: 1px solid var(--container-border);
+    padding: 15px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    margin-bottom: 30px;
+  }
+  .notes-container h3 {
+    margin-top: 0;
+    color: var(--accent-color);
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--container-border);
+    padding-bottom: 8px;
+  }
+  .notes-subtitle {
+    font-size: 12px;
+    color: var(--btn-text);
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+  #personalNotes {
+    width: 100%;
+    height: 110px;
+    box-sizing: border-box;
+    background-color: var(--input-bg);
+    border: 1px solid var(--container-border);
+    border-radius: 6px;
+    color: var(--text-color);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    padding: 10px;
+    resize: vertical;
+    outline: none;
+  }
+  #personalNotes::placeholder {
+    color: #6c757d;
+  }
+  /* Toast Notification */
+  #toast {
+    visibility: hidden;
+    min-width: 200px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #00ffaa;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    border: 1px solid #00ffaa;
+    font-family: 'Share Tech Mono', monospace;
+    box-shadow: 0 0 15px rgba(0, 255, 170, 0.4);
+  }
+  #toast.show {
+    visibility: visible;
+    animation: fadein 0.3s, fadeout 0.3s 1.2s;
+  }
+  @keyframes fadein {
+    from { bottom: 0; opacity: 0; }
+    to { bottom: 30px; opacity: 1; }
+  }
+  @keyframes fadeout {
+    from { bottom: 30px; opacity: 1; }
+    to { bottom: 0; opacity: 0; }
+  }
+</style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Ultimate ARK Color Combos List</h1>
-    <div class="subtitle">A clean, searchable reference sheet for ARK color combinations, variants, and breeding notes.</div>
+<h1>ARK COLOR COMBINATIONS</h1>
 
-    <div class="notes-banner">
-        <strong>Notes & Suggestions:</strong> This reference sheet is actively maintained. If there are any color combos missing or if you have suggestions, please feel free to reach out!
-    </div>
-
-    <input type="text" id="searchInput" class="search-box" placeholder="Search colors, regions, or themes..." onkeyup="filterCards()">
-
-    <div id="contentList">
-        <div class="card" data-search="4 79 yellow actual black batman bumblebee">
-            <h3>4 / 79 — BATMAN / BUMBLEBEE</h3>
-            <p><strong>Regions:</strong> <span class="color-tag">4 - Yellow</span> <span class="color-tag">79 - Actual Black</span></p>
-            <p><strong>Notes:</strong> High contrast mutation lines.</p>
-        </div>
-
-        <div class="card" data-search="5 79 cyan actual black tron">
-            <h3>5 / 79 — TRON</h3>
-            <p><strong>Regions:</strong> <span class="color-tag">5 - Cyan</span> <span class="color-tag">79 - Actual Black</span></p>
-            <p><strong>Notes:</strong> Pops exceptionally well in dark caves or aberration zones.</p>
-        </div>
-
-        <div class="card" data-search="36 79 dino albino actual black oreo skeleton">
-            <h3>36 / 79 — OREO / SKELETON</h3>
-            <p><strong>Regions:</strong> <span class="color-tag">36 - Dino Albino</span> <span class="color-tag">79 - Actual Black</span></p>
-            <p><strong>Notes:</strong> Classic monochrome aesthetic.</p>
-        </div>
-
-        <div class="card" data-search="68 79 deep pink actual black playboy">
-            <h3>68 / 79 — PLAYBOY</h3>
-            <p><strong>Regions:</strong> <span class="color-tag">68 - Deep Pink</span> <span class="color-tag">79 - Actual Black</span></p>
-            <p><strong>Notes:</strong> Vibrant neon pop against dark bases.</p>
-        </div>
-
-        <div class="card" data-search="75 79 orange actual black pumpkin">
-            <h3>75 / 79 — PUMPKIN</h3>
-            <p><strong>Regions:</strong> <span class="color-tag">75 - Orange</span> <span class="color-tag">79 - Actual Black</span></p>
-            <p><strong>Notes:</strong> Perfect theme for Halloween event breeding lines.</p>
-        </div>
-    </div>
+<!-- Search, Filters, View Toggle & Theme Switcher -->
+<div class="controls-container">
+  <input type="text" id="searchBox" placeholder="Search combinations, colors, or names..." onkeyup="filterTable()">
+  <div class="filter-buttons">
+    <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+    <button class="filter-btn" onclick="setFilter('2', this)">Duos (2)</button>
+    <button class="filter-btn" onclick="setFilter('3', this)">Trios (3)</button>
+    <button class="filter-btn" onclick="setFilter('4', this)">Quads (4)</button>
+  </div>
+  <div class="action-row">
+    <button class="toggle-btn" id="viewToggleBtn" onclick="toggleView()">Compact View</button>
+    <button class="theme-btn" id="themeToggleBtn" onclick="toggleTheme()">Light Theme</button>
+  </div>
 </div>
 
+<!-- Quick Stats Counter -->
+<div class="stats-counter" id="statsCounter">Showing all combinations</div>
+
+<!-- Region Mapping Reference Guide Accordion -->
+<div class="guide-container">
+  <div class="guide-header" onclick="toggleGuide()">
+    <span>📖 Quick ARK Color Regions Guide</span>
+    <span id="guideArrow">▼</span>
+  </div>
+  <div class="guide-content" id="guideContent">
+    <strong>Region 0:</strong> Usually main body / torso.<br>
+    <strong>Region 1:</strong> Usually underbelly / secondary accents.<br>
+    <strong>Region 2:</strong> Wings, fins, or stripe markings.<br>
+    <strong>Region 3:</strong> Mane, sail, or back feathers.<br>
+    <strong>Region 4:</strong> Leg markings / horns / plates.<br>
+    <strong>Region 5:</strong> Face details / specialized accents.
+  </div>
+</div>
+
+<div class="table-container">
+  <table id="comboTable">
+    <thead>
+      <tr>
+        <th>Combinations</th>
+        <th id="colorsHeader">Colors</th>
+        <th>Combo Names</th>
+        <th>Alternative Names</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Injected via JS -->
+    </tbody>
+  </table>
+</div>
+
+<!-- Breeding & Server Notes Panel -->
+<div class="notes-container">
+  <h3>Breeding & Server Notes</h3>
+  <div class="notes-subtitle">Note: This is a local scratchpad on your device for your own active projects, mutation goals, or reminders.</div>
+  <textarea id="personalNotes" placeholder="Jot down your active breeding lines, server rates, or project reminders here..."></textarea>
+</div>
+
+<!-- Copy Notification Toast -->
+<div id="toast">Copied to Clipboard!</div>
+
 <script>
-    function filterCards() {
-        let input = document.getElementById('searchInput').value.toLowerCase();
-        let cards = document.getElementsByClassName('card');
+  const combos = [
+    { ids: "1 / 79", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "DEADPOOL", altName: "", variantNote: "Can use 131 instead" },
+    { ids: "2 / 79", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "SUB-ZERO", altName: "", variantNote: "Can use 195 or 187 instead" },
+    { ids: "3 / 79", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "MONSTER", altName: "", variantNote: "" },
+    { ids: "4 / 79", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "BATMAN", altName: "BUMBLE-BEE", variantNote: "" },
+    { ids: "5 / 79", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "TRON", altName: "", variantNote: "" },
+    { ids: "36 / 79", count: 2, colors: [{ name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "OREO", altName: "SKELETON/STORMTROOPER", variantNote: "" },
+    { ids: "68 / 79", count: 2, colors: [{ name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "PLAYBOY", altName: "", variantNote: "Can use 218 instead" },
+    { ids: "75 / 79", count: 2, colors: [{ name: "75 - Orange", hex: "#ffa500", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "PUMPKIN", altName: "", variantNote: "Can use 139 instead" },
+    { ids: "84 / 79", count: 2, colors: [{ name: "84 - Mint", hex: "#98ff98", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "THIN MINT", altName: "", variantNote: "" },
+    { ids: "96 / 79", count: 2, colors: [{ name: "96 - Glacial", hex: "#87ceeb", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "BLACK ICE", altName: "", variantNote: "" },
+    { ids: "203 / 79", count: 2, colors: [{ name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "NIGHTMARE", altName: "RAVEN", variantNote: "" },
+    { ids: "245 / 79", count: 2, colors: [{ name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "ANUBIS", altName: "ROYAL", variantNote: "" },
+    { ids: "1 / 36", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "ALPHA", altName: "PENNYWISE", variantNote: "" },
+    { ids: "2 / 36", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "PORCELAIN", altName: "TIDAL WAVE", variantNote: "" },
+    { ids: "4 / 36", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "YELLOW SNOW", altName: "", variantNote: "" },
+    { ids: "5 / 36", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "FREEZE", altName: "", variantNote: "Can use 187 instead" },
+    { ids: "68 / 36", count: 2, colors: [{ name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "BARBIE", altName: "", variantNote: "" },
+    { ids: "75 / 36", count: 2, colors: [{ name: "75 - Orange", hex: "#ffa500", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "ORANGESICLE", altName: "DREAMSICLE", variantNote: "Can use 139 instead" },
+    { ids: "96 / 36", count: 2, colors: [{ name: "96 - Glacial", hex: "#87ceeb", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "WINTER", altName: "GLACIAL SNOW", variantNote: "" },
+    { ids: "203 / 36", count: 2, colors: [{ name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "FREEZA", altName: "", variantNote: "" },
+    { ids: "245 / 36", count: 2, colors: [{ name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "GILDED MARBLE", altName: "", variantNote: "" },
+    { ids: "1 / 2", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }], name: "SPIDERMAN", altName: "", variantNote: "" },
+    { ids: "1 / 5", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "5 - Cyan", hex: "#00ffff", darkText: false }], name: "SLUSHY", altName: "", variantNote: "" },
+    { ids: "1 / 85", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "85 - Jade", hex: "#00a86b", darkText: false }], name: "X-MAS", altName: "", variantNote: "" },
+    { ids: "2 / 3", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "3 - Green", hex: "#00ff00", darkText: false }], name: "NEON", altName: "", variantNote: "" },
+    { ids: "2 / 6", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "6 - Magenta", hex: "#ff00ff", darkText: false }], name: "BUBBLEGUM", altName: "", variantNote: "" },
+    { ids: "3 / 31", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "31 - Dino Dark Purple", hex: "#2b2638", darkText: true }], name: "WONKA", altName: "", variantNote: "" },
+    { ids: "5 / 3", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "3 - Green", hex: "#00ff00", darkText: false }], name: "TIDAL", altName: "", variantNote: "" },
+    { ids: "5 / 6", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "6 - Magenta", hex: "#ff00ff", darkText: false }], name: "COTTON CANDY", altName: "", variantNote: "" },
+    { ids: "5 / 31", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "31 - Dino Dark Purple", hex: "#2b2638", darkText: true }], name: "STARDUST", altName: "", variantNote: "" },
+    { ids: "67 / 96", count: 2, colors: [{ name: "67 - Light Pink", hex: "#ffb6c1", darkText: false }, { name: "96 - Glacial", hex: "#87ceeb", darkText: false }], name: "FAIRY FLOSS", altName: "", variantNote: "" },
+    { ids: "54 / 76", count: 2, colors: [{ name: "54 - Dino Deep Blue", hex: "#1c2638", darkText: true }, { name: "76 - Peach", hex: "#ffdab9", darkText: false }], name: "SURFBOARD", altName: "", variantNote: "" },
+    { ids: "3 / 4", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }], name: "LEMON LIME", altName: "", variantNote: "" },
+    { ids: "3 / 68", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "68 - Deep Pink", hex: "#ff1493", darkText: false }], name: "WATERMELON", altName: "", variantNote: "" },
+    { ids: "3 / 203", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }], name: "JOKER", altName: "", variantNote: "" },
+    { ids: "4 / 2", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }], name: "WOLVERINE", altName: "", variantNote: "" },
+    { ids: "4 / 6", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "6 - Magenta", hex: "#ff00ff", darkText: false }], name: "PINK LEMONADE", altName: "STRAWBERRY LEMONADE", variantNote: "" },
+    { ids: "4 / 35", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "65 - Powder Blue", hex: "#b3c2d1", darkText: false }], name: "VAULT-TEC", altName: "FALLOUT", variantNote: "" },
+    { ids: "4 / 5", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "5 - Cyan", hex: "#00ffff", darkText: false }], name: "CALYPSO", altName: "", variantNote: "" },
+    { ids: "94 / 96", count: 2, colors: [{ name: "94 - Teal", hex: "#008080", darkText: true }, { name: "96 - Glacial", hex: "#87ceeb", darkText: false }], name: "FROZEN", altName: "", variantNote: "" },
+    { ids: "201 / 245", count: 2, colors: [{ name: "201 - Eminence Purple", hex: "#4b0082", darkText: true }, { name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }], name: "SPYRO", altName: "", variantNote: "" },
+    { ids: "131 / 245", count: 2, colors: [{ name: "131 - Red Colouring", hex: "#d22b2b", darkText: true }, { name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }], name: "IRON MAN", altName: "", variantNote: "" },
+    { ids: "203 / 245", count: 2, colors: [{ name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }, { name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }], name: "LAKERS", altName: "MONARCH", variantNote: "" },
+    { ids: "67 / 79 / 36", count: 3, colors: [{ name: "67 - Light Pink", hex: "#ffb6c1", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "KUROMI", altName: "", variantNote: "" },
+    { ids: "1 / 2 / 36", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "PATRIOT", altName: "USA", variantNote: "" },
+    { ids: "1 / 36 / 85", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "85 - Jade", hex: "#00a86b", darkText: false }], name: "MEXICO", altName: "ITALY", variantNote: "" },
+    { ids: "5 / 6 / 36", count: 3, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "6 - Magenta", hex: "#ff00ff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "BIRTHDAY CAKE", altName: "", variantNote: "" },
+    { ids: "1 / 5 / 79", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "GLITCH", altName: "3-D", variantNote: "" },
+    { ids: "1 / 36 / 79", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "HARLEY QUINN", altName: "", variantNote: "" },
+    { ids: "1 / 85 / 79", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "85 - Jade", hex: "#00a86b", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "BLACK CHRISTMAS", altName: "", variantNote: "" },
+    { ids: "2 / 4 / 79", count: 3, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "TRUE WOLVERINE", altName: "", variantNote: "" },
+    { ids: "4 / 76 / 79", count: 3, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "76 - Peach", hex: "#ffdab9", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "HOTROD", altName: "", variantNote: "" },
+    { ids: "5 / 68 / 79", count: 3, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "GALAXY", altName: "", variantNote: "" },
+    { ids: "5 / 203 / 79", count: 3, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "LUCID GALAXY", altName: "", variantNote: "" },
+    { ids: "36 / 68 / 79", count: 3, colors: [{ name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "GOTH BARBIE", altName: "DRACULAURA", variantNote: "" },
+    { ids: "68 / 79 / 203", count: 3, colors: [{ name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }], name: "GOTH", altName: "EMO", variantNote: "" },
+    { ids: "75 / 79 / 203", count: 3, colors: [{ name: "75 - Orange", hex: "#ffa500", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }], name: "HOLLOWEEN", altName: "SPOOKY / TRICK OR TREAT", variantNote: "Can use 139 instead" },
+    { ids: "3 / 79 / 203", count: 3, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }], name: "BEETLEJUICE", altName: "DARK JOKER", variantNote: "" },
+    { ids: "1 / 3 / 4", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }], name: "RASTA", altName: "PORTUGAL", variantNote: "" },
+    { ids: "1 / 2 / 3 / 4", count: 4, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }], name: "LEGO", altName: "RAINBOW", variantNote: "" },
+    { ids: "31 / 84 / 194 / 252", count: 4, colors: [{ name: "31 - Dino Dark Purple", hex: "#2b2638", darkText: true }, { name: "84 - Mint", hex: "#98ff98", darkText: false }, { name: "194 - Cobalt", hex: "#0047ab", darkText: true }, { name: "252 - Dusk", hex: "#483d8b", darkText: true }], name: "NEBULA", altName: "", variantNote: "" }
+  ];
 
-        for (let i = 0; i < cards.length; i++) {
-            let searchableText = cards[i].getAttribute('data-search').toLowerCase();
-            let cardContent = cards[i].innerText.toLowerCase();
-            
-            if (searchableText.includes(input) || cardContent.includes(input)) {
-                cards[i].style.display = "";
-            } else {
-                cards[i].style.display = "none";
-            }
-        }
+  let currentFilter = 'all';
+  let isCompact = false;
+
+  function renderTable(data) {
+    const tbody = document.querySelector("#comboTable tbody");
+    const colorsHeader = document.getElementById("colorsHeader");
+    tbody.innerHTML = "";
+
+    colorsHeader.style.display = isCompact ? "none" : "";
+
+    data.forEach(combo => {
+      const tr = document.createElement("tr");
+      tr.setAttribute("data-count", combo.count);
+      
+      let colorsHtml = "";
+      if (!isCompact) {
+        combo.colors.forEach(c => {
+          const textClass = c.darkText ? "dark-text" : "";
+          colorsHtml += `<div class="color-block ${textClass}" style="background-color: ${c.hex}">${c.name}</div><br>`;
+        });
+      } else {
+        colorsHtml = combo.colors.map(c => c.name).join(" + ");
+      }
+
+      let noteHtml = combo.variantNote ? `<div class="variant-note">💡 ${combo.variantNote}</div>` : '';
+
+      tr.innerHTML = `
+        <td class="combo-ids" onclick="copyText('${combo.ids}')" title="Tap to copy">${combo.ids}</td>
+        ${!isCompact ? `<td>${colorsHtml}</td>` : ''}
+        <td class="combo-name" onclick="copyText('${combo.name}')" title="Tap to copy">${combo.name}</td>
+        <td class="alt-name">${combo.altName}${noteHtml}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    updateStats(data.length);
+  }
+
+  function updateStats(visibleCount) {
+    const stats = document.getElementById("statsCounter");
+    const total = combos.length;
+    if (visibleCount === total) {
+      stats.textContent = `Showing all ${total} combinations`;
+    } else {
+      stats.textContent = `Showing ${visibleCount} of ${total} combinations`;
     }
-</script>
+  }
 
+  function toggleView() {
+    isCompact = !isCompact;
+    const btn = document.getElementById("viewToggleBtn");
+    btn.textContent = isCompact ? "Detailed View" : "Compact View";
+    renderTable(getFilteredData());
+  }
+
+  function toggleTheme() {
+    document.body.classList.toggle("light-theme");
+    const btn = document.getElementById("themeToggleBtn");
+    btn.textContent = document.body.classList.contains("light-theme") ? "Dark Theme" : "Light Theme";
+  }
+
+  function toggleGuide() {
+    const content = document.getElementById("guideContent");
+    const arrow = document.getElementById("guideArrow");
+    content.classList.toggle("show");
+    arrow.textContent = content.classList.contains("show") ? "▲" : "▼";
+  }
+
+  function copyText(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast(`Copied: ${text}`);
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+  }
+
+  function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.className = "show";
+    setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 1500);
+  }
+
+  function getFilteredData() {
+    const query = document.getElementById("searchBox").value.toLowerCase();
+    return combos.filter(combo => {
+      const fullText = (combo.ids + " " + combo.name + " " + combo.altName + " " + (combo.variantNote || "") + " " + combo.colors.map(c => c.name).join(" ")).toLowerCase();
+      const matchesSearch = fullText.includes(query);
+      const matchesFilter = (currentFilter === 'all' || combo.count.toString() === currentFilter);
+      return matchesSearch && matchesFilter;
+    });
+  }
+
+  function filterTable() {
+    const filtered = getFilteredData();
+    renderTable(filtered);
+  }
+
+  function setFilter(filterType, btn) {
+    currentFilter = filterType;
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    filterTable();
+  }
+
+  // Initial render on load
+  renderTable(combos);
+</script>
 </body>
 </html>
