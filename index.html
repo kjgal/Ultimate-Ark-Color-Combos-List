@@ -50,6 +50,18 @@
             outline: none;
             border-color: var(--accent-color);
         }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
         .notes-banner {
             background-color: #2a2438;
             border-left: 4px solid var(--accent-color);
@@ -58,39 +70,14 @@
             margin-bottom: 25px;
             font-size: 0.95rem;
         }
-        .table-container {
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-        }
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-        th {
-            background-color: #252525;
-            color: var(--accent-color);
-        }
-        tr:last-child td {
-            border-bottom: none;
-        }
-        tr:hover {
-            background-color: #252525;
-        }
-        .color-box {
+        .color-tag {
             display: inline-block;
-            padding: 4px 8px;
+            background-color: #333;
+            padding: 3px 8px;
             border-radius: 4px;
             font-size: 0.85rem;
-            font-weight: bold;
+            margin-right: 5px;
+            margin-bottom: 5px;
         }
     </style>
 </head>
@@ -104,72 +91,54 @@
         <strong>Notes & Suggestions:</strong> This reference sheet is actively maintained. If there are any color combos missing or if you have suggestions, please feel free to reach out!
     </div>
 
-    <input type="text" id="searchInput" class="search-box" placeholder="Search color names, numbers, or themes..." onkeyup="filterTable()">
+    <input type="text" id="searchInput" class="search-box" placeholder="Search colors, regions, or themes..." onkeyup="filterCards()">
 
-    <div class="table-container">
-        <table id="colorTable">
-            <thead>
-                <tr>
-                    <th>Combo ID / Regions</th>
-                    <th>Color 1</th>
-                    <th>Color 2</th>
-                    <th>Theme / Name</th>
-                    <th>Notes</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>4 / 79</td>
-                    <td><span class="color-box" style="background-color: #ffff00; color: #000;">4 - Yellow</span></td>
-                    <td><span class="color-box" style="background-color: #1a1a1a; color: #fff;">79 - Actual Black</span></td>
-                    <td>BATMAN</td>
-                    <td>BUMBLEBEE</td>
-                </tr>
-                <tr>
-                    <td>5 / 79</td>
-                    <td><span class="color-box" style="background-color: #00ffff; color: #000;">5 - Cyan</span></td>
-                    <td><span class="color-box" style="background-color: #1a1a1a; color: #fff;">79 - Actual Black</span></td>
-                    <td>TRON</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>36 / 79</td>
-                    <td><span class="color-box" style="background-color: #e0e0e0; color: #000;">36 - Dino Albino</span></td>
-                    <td><span class="color-box" style="background-color: #1a1a1a; color: #fff;">79 - Actual Black</span></td>
-                    <td>OREO</td>
-                    <td>SKELETON</td>
-                </tr>
-                <tr>
-                    <td>68 / 79</td>
-                    <td><span class="color-box" style="background-color: #ff1493; color: #fff;">68 - Deep Pink</span></td>
-                    <td><span class="color-box" style="background-color: #1a1a1a; color: #fff;">79 - Actual Black</span></td>
-                    <td>PLAYBOY</td>
-                    <td>💡 Can use for specific themes</td>
-                </tr>
-                <tr>
-                    <td>75 / 79</td>
-                    <td><span class="color-box" style="background-color: #ff8c00; color: #000;">75 - Orange</span></td>
-                    <td><span class="color-box" style="background-color: #1a1a1a; color: #fff;">79 - Actual Black</span></td>
-                    <td>PUMPKIN</td>
-                    <td>💡 Can use for specific themes</td>
-                </tr>
-            </tbody>
-        </table>
+    <div id="contentList">
+        <div class="card" data-search="4 79 yellow actual black batman bumblebee">
+            <h3>4 / 79 — BATMAN / BUMBLEBEE</h3>
+            <p><strong>Regions:</strong> <span class="color-tag">4 - Yellow</span> <span class="color-tag">79 - Actual Black</span></p>
+            <p><strong>Notes:</strong> High contrast mutation lines.</p>
+        </div>
+
+        <div class="card" data-search="5 79 cyan actual black tron">
+            <h3>5 / 79 — TRON</h3>
+            <p><strong>Regions:</strong> <span class="color-tag">5 - Cyan</span> <span class="color-tag">79 - Actual Black</span></p>
+            <p><strong>Notes:</strong> Pops exceptionally well in dark caves or aberration zones.</p>
+        </div>
+
+        <div class="card" data-search="36 79 dino albino actual black oreo skeleton">
+            <h3>36 / 79 — OREO / SKELETON</h3>
+            <p><strong>Regions:</strong> <span class="color-tag">36 - Dino Albino</span> <span class="color-tag">79 - Actual Black</span></p>
+            <p><strong>Notes:</strong> Classic monochrome aesthetic.</p>
+        </div>
+
+        <div class="card" data-search="68 79 deep pink actual black playboy">
+            <h3>68 / 79 — PLAYBOY</h3>
+            <p><strong>Regions:</strong> <span class="color-tag">68 - Deep Pink</span> <span class="color-tag">79 - Actual Black</span></p>
+            <p><strong>Notes:</strong> Vibrant neon pop against dark bases.</p>
+        </div>
+
+        <div class="card" data-search="75 79 orange actual black pumpkin">
+            <h3>75 / 79 — PUMPKIN</h3>
+            <p><strong>Regions:</strong> <span class="color-tag">75 - Orange</span> <span class="color-tag">79 - Actual Black</span></p>
+            <p><strong>Notes:</strong> Perfect theme for Halloween event breeding lines.</p>
+        </div>
     </div>
 </div>
 
 <script>
-    function filterTable() {
+    function filterCards() {
         let input = document.getElementById('searchInput').value.toLowerCase();
-        let table = document.getElementById('colorTable');
-        let tr = table.getElementsByTagName('tr');
+        let cards = document.getElementsByClassName('card');
 
-        for (let i = 1; i < tr.length; i++) {
-            let rowText = tr[i].textContent.toLowerCase();
-            if (rowText.includes(input)) {
-                tr[i].style.display = "";
+        for (let i = 0; i < cards.length; i++) {
+            let searchableText = cards[i].getAttribute('data-search').toLowerCase();
+            let cardContent = cards[i].innerText.toLowerCase();
+            
+            if (searchableText.includes(input) || cardContent.includes(input)) {
+                cards[i].style.display = "";
             } else {
-                tr[i].style.display = "none";
+                cards[i].style.display = "none";
             }
         }
     }
