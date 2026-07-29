@@ -1,97 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARK Color Combinations</title>
-<!-- Import Bitcount Prop Double and Share Tech Mono from Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate ARK Color Combos List</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --accent-color: #bb86fc;
+            --border-color: #333;
+            --input-bg: #2d2d2d;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+        .search-box {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1rem;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+        .notes-banner {
+            background-color: #2a2438;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+        .color-tag {
+            display: inline-block;
+            background-color: #333;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
 
-<style>
-  :root {
-    --bg-gradient: linear-gradient(rgba(5, 7, 10, 0.82), rgba(3, 5, 7, 0.92)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9Xi2j-FhpzfapkiCSM1sYuQQWjZFGFLlaA7yCsRG3RkT-Qo6iUNGc74o&s=10');
-    --text-color: #e0e0e0;
-    --header-color: #f0f0f0;
-    --container-bg: rgba(10, 12, 15, 0.3);
-    --container-border: rgba(255, 255, 255, 0.2);
-    --table-header-bg: rgba(15, 18, 22, 0.85);
-    --row-even: rgba(255, 255, 255, 0.03);
-    --row-hover: rgba(255, 255, 255, 0.1);
-    --input-bg: rgba(10, 12, 15, 0.6);
-    --btn-bg: rgba(15, 18, 22, 0.7);
-    --btn-text: #c0c5cd;
-    --accent-color: #00ffaa;
-  }
+<div class="container">
+    <h1>Ultimate ARK Color Combos List</h1>
+    <div class="subtitle">A clean, searchable reference sheet for ARK color combinations, variants, and breeding notes.</div>
 
-  body.light-theme {
-    --bg-gradient: linear-gradient(rgba(240, 242, 245, 0.9), rgba(220, 225, 230, 0.95)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9Xi2j-FhpzfapkiCSM1sYuQQWjZFGFLlaA7yCsRG3RkT-Qo6iUNGc74o&s=10');
-    --text-color: #212529;
-    --header-color: #111315;
-    --container-bg: rgba(255, 255, 255, 0.7);
-    --container-border: rgba(0, 0, 0, 0.15);
-    --table-header-bg: rgba(220, 225, 230, 0.9);
-    --row-even: rgba(0, 0, 0, 0.03);
-    --row-hover: rgba(0, 0, 0, 0.08);
-    --input-bg: rgba(255, 255, 255, 0.8);
-    --btn-bg: rgba(230, 235, 240, 0.9);
-    --btn-text: #33383e;
-    --accent-color: #007755;
-  }
+    <div class="notes-banner">
+        <strong>Notes & Suggestions:</strong> This reference sheet is actively maintained. If there are any color combos missing or if you have suggestions, please feel free to reach out!
+    </div>
 
-  body {
-    font-family: 'Share Tech Mono', monospace, sans-serif;
-    background: var(--bg-gradient);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: var(--text-color);
-    margin: 0;
-    padding: 15px;
-    min-height: 100vh;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-  h1 { 
-    text-align: center; 
-    color: var(--header-color); 
-    font-family: 'Bitcount Prop Double', sans-serif;
-    text-transform: uppercase; 
-    letter-spacing: 4px; 
-    font-size: 30px;
-    text-shadow: 0 0 18px rgba(255, 255, 255, 0.4), 2px 2px 6px rgba(0,0,0,0.3);
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--container-border);
-    padding-bottom: 12px;
-  }
-  .controls-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
-  #searchBox {
-    width: 100%;
-    padding: 12px 15px;
-    box-sizing: border-box;
-    border-radius: 8px;
-    border: 1px solid var(--container-border);
-    background-color: var(--input-bg);
-    backdrop-filter: blur(4px);
-    color: var(--text-color);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 16px;
-    outline: none;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
-  }
-  #searchBox::placeholder {
-    color: #8892b0;
-  }
-  .filter-buttons {
-    display: flex;
-    gap: 6px;
-    width: 100%;
-  }
+    <input type="text" id="searchInput" class="search-box" placeholder="Search colors, regions, or notes..." onkeyup="filterTable()">
+
+    <div id="contentList">
+        <!-- Example Entry 1 -->
+        <div class="card" data-search="blood wyvern red black region 0 region 1">
+            <h3>Blood Wyvern Theme</h3>
+            <p><strong>Regions:</strong> <span class="color-tag">Region 0: Red</span> <span class="color-tag">Region 1: Dark Black</span></p>
+            <p><strong>Breeding Notes:</strong> Great mutation lines for Halloween events or dark aesthetic builds.</p>
+        </div>
+
+        <!-- Example Entry 2 -->
+        <div class="card" data-search="aberrant neon blue cyan region 4">
+            <h3>Aberrant Neon Glow</h3>
+            <p><strong>Regions:</strong> <span class="color-tag">Region 4: Cyan</span> <span class="color-tag">Region 5: Electric Blue</span></p>
+            <p><strong>Breeding Notes:</strong> Pops exceptionally well in dark cave biomes and aberration zones.</p>
+        </div>
+        
+        <!-- Add more cards below following the same format -->
+    </div>
+</div>
+
+<script>
+    function filterTable() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('card');
+
+        for (let i = 0; i < cards.length; i++) {
+            let searchableText = cards[i].getAttribute('data-search').toLowerCase();
+            let cardContent = cards[i].innerText.toLowerCase();
+            
+            if (searchableText.includes(input) || cardContent.includes(input)) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
   .filter-btn {
     flex: 1;
     padding: 9px 2px;
