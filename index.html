@@ -60,9 +60,17 @@
     letter-spacing: 4px; 
     font-size: 30px;
     text-shadow: 0 0 18px rgba(255, 255, 255, 0.4), 2px 2px 6px rgba(0,0,0,0.3);
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     border-bottom: 2px solid var(--container-border);
     padding-bottom: 12px;
+  }
+  .mission-statement {
+    text-align: center;
+    font-size: 14px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-style: italic;
+    line-height: 1.4;
   }
   .controls-container {
     display: flex;
@@ -285,7 +293,7 @@
     margin-bottom: 10px;
     font-style: italic;
   }
-  #personalNotes {
+  #suggestionInput {
     width: 100%;
     height: 110px;
     box-sizing: border-box;
@@ -299,7 +307,7 @@
     resize: vertical;
     outline: none;
   }
-  #personalNotes::placeholder {
+  #suggestionInput::placeholder {
     color: #6c757d;
   }
   /* Toast Notification */
@@ -337,6 +345,9 @@
 <body>
 
 <h1>ARK COLOR COMBINATIONS</h1>
+<div class="mission-statement">
+  A living, community-driven dictionary for ARK color combos. Know a different alt-name for a color combo or I'm missing some? Submit&nbsp;it&nbsp;below!
+</div>
 
 <!-- Search, Filters, View Toggle & Theme Switcher -->
 <div class="controls-container">
@@ -388,11 +399,21 @@
   </table>
 </div>
 
-<!-- Missing Combos & Suggestions Panel -->
+<!-- Missing Combos & Suggestions Panel with Discord Webhook -->
 <div class="notes-container">
   <h3>Missing Combos & Suggestions</h3>
-  <div class="notes-subtitle">Use this space to list any missing color combinations or suggest additions...</div>
-  <textarea id="personalNotes" placeholder="Jot down missing color combinations or suggestions here..."></textarea>
+  <div class="notes-subtitle">Drop any missing color combinations or feedback below!</div>
+  
+  <form id="suggestionForm" onsubmit="sendToDiscord(event)">
+    <textarea id="suggestionInput" placeholder="Type your suggestion here..." required></textarea>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
+      <button type="submit" style="padding: 9px 16px; background-color: var(--accent-color); color: #000000; border: none; border-radius: 6px; cursor: pointer; font-family: 'Share Tech Mono', monospace; font-weight: bold; text-transform: uppercase;">Send to Discord</button>
+      
+      <!-- ARK Implant Quick Link -->
+      <a href="https://www.arkimplant.com/dinos?species=rex" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: none; font-size: 13px; font-weight: bold;">ARK Implant Tool &rarr;</a>
+    </div>
+  </form>
+  <div id="formStatus" style="font-size: 12px; margin-top: 6px; color: #00ffaa;"></div>
 </div>
 
 <!-- Copy Notification Toast -->
@@ -566,6 +587,41 @@
     document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
     filterTable();
+  }
+
+  // Discord Webhook Functionality for Suggestions
+  async function sendToDiscord(event) {
+    event.preventDefault();
+    const inputField = document.getElementById('suggestionInput');
+    const statusDiv = document.getElementById('formStatus');
+    const message = inputField.value.trim();
+    
+    const webhookUrl = 'https://discord.com/api/webhooks/1532205039995719691/K25p2iV4grQb51gOt9Kxlfv7eRcpI6R3fgpROPgeO2qypcRjlV4UGUbha7VN_33R8mvD';
+    
+    if (!message) return;
+
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          content: `💡 **New Color Tool Feedback:**\n> ${message}`
+        })
+      });
+
+      if (response.ok) {
+        statusDiv.textContent = 'Suggestion sent successfully! Thank you!';
+        statusDiv.style.color = '#00ffaa';
+        inputField.value = '';
+        setTimeout(() => { statusDiv.textContent = ''; }, 4000);
+      } else {
+        statusDiv.textContent = 'Oops! Something went wrong sending it.';
+        statusDiv.style.color = '#ff6b6b';
+      }
+    } catch (error) {
+      statusDiv.textContent = 'Error connecting to Discord.';
+      statusDiv.style.color = '#ff6b6b';
+    }
   }
 
   // Initial render on load
