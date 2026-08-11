@@ -310,6 +310,22 @@
   #suggestionInput::placeholder {
     color: #6c757d;
   }
+  
+  /* Dynamic Footer Layout for Button & Links */
+  .form-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 8px;
+  }
+  .links-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
   /* Toast Notification */
   #toast {
     visibility: hidden;
@@ -406,11 +422,14 @@
   
   <form id="suggestionForm" onsubmit="sendToDiscord(event)">
     <textarea id="suggestionInput" placeholder="Type your suggestion here..." required></textarea>
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
+    <div class="form-footer">
       <button type="submit" style="padding: 9px 16px; background-color: var(--accent-color); color: #000000; border: none; border-radius: 6px; cursor: pointer; font-family: 'Share Tech Mono', monospace; font-weight: bold; text-transform: uppercase;">Send to Discord</button>
       
-      <!-- ARK Implant Quick Link -->
-      <a href="https://www.arkimplant.com/dinos?species=rex" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: none; font-size: 13px; font-weight: bold;">ARK Implant Tool &rarr;</a>
+      <!-- Responsive Links Group -->
+      <div class="links-group">
+        <a href="https://www.arkimplant.com/dinos?species=rex" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: none; font-size: 13px; font-weight: bold;">ARK Implant Tool &rarr;</a>
+        <a href="https://arkutils.netlify.app/tools/howmanyfemales" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: none; font-size: 13px; font-weight: bold;">Mutation Probability &rarr;</a>
+      </div>
     </div>
   </form>
   <div id="formStatus" style="font-size: 12px; margin-top: 6px; color: #00ffaa;"></div>
