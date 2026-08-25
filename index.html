@@ -16,7 +16,7 @@
     --header-color: #f0f0f0;
     --container-bg: rgba(10, 12, 15, 0.3);
     --container-border: rgba(255, 255, 255, 0.2);
-    --table-header-bg: rgba(15, 18, 22, 0.85);
+    --table-header-bg: rgba(15, 18, 22, 0.95);
     --row-even: rgba(255, 255, 255, 0.03);
     --row-hover: rgba(255, 255, 255, 0.1);
     --input-bg: rgba(10, 12, 15, 0.6);
@@ -31,7 +31,7 @@
     --header-color: #111315;
     --container-bg: rgba(255, 255, 255, 0.7);
     --container-border: rgba(0, 0, 0, 0.15);
-    --table-header-bg: rgba(220, 225, 230, 0.9);
+    --table-header-bg: rgba(220, 225, 230, 0.98);
     --row-even: rgba(0, 0, 0, 0.03);
     --row-hover: rgba(0, 0, 0, 0.08);
     --input-bg: rgba(255, 255, 255, 0.8);
@@ -123,9 +123,11 @@
   .action-row {
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
   }
-  .toggle-btn, .theme-btn {
+  .toggle-btn, .theme-btn, .sort-btn {
     flex: 1;
+    min-width: 100px;
     padding: 10px;
     background-color: var(--btn-bg);
     border: 1px solid var(--container-border);
@@ -138,7 +140,7 @@
     letter-spacing: 1px;
     transition: all 0.2s ease;
   }
-  .toggle-btn:hover, .theme-btn:hover {
+  .toggle-btn:hover, .theme-btn:hover, .sort-btn:hover {
     background-color: var(--accent-color);
     color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
@@ -194,21 +196,21 @@
   table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 15px;
+    font-size: 14px;
     text-align: center;
-    min-width: 600px;
+    min-width: 550px;
   }
   th {
     background-color: var(--table-header-bg);
     color: var(--header-color);
-    padding: 14px 10px;
-    font-size: 14px;
-    letter-spacing: 2px;
+    padding: 12px 8px;
+    font-size: 13px;
+    letter-spacing: 1px;
     border-bottom: 2px solid var(--container-border);
     text-transform: uppercase;
   }
   td {
-    padding: 12px 10px;
+    padding: 12px 8px;
     border-bottom: 1px solid var(--container-border);
     vertical-align: middle;
   }
@@ -226,15 +228,16 @@
   }
   .color-block {
     display: inline-block;
-    padding: 6px 12px;
+    padding: 5px 10px;
     border-radius: 6px;
     font-weight: 700;
     color: black;
     text-shadow: 1px 1px 0px rgba(255,255,255,0.4);
-    margin: 4px 0;
-    width: 85%;
+    margin: 3px 0;
+    width: 90%;
     box-shadow: 0 3px 6px rgba(0,0,0,0.4);
     border: 1px solid rgba(255,255,255,0.1);
+    font-size: 13px;
   }
   .dark-text { 
     color: #ffffff; 
@@ -250,17 +253,19 @@
   .combo-ids { 
     color: var(--btn-text); 
     font-weight: 800; 
-    font-size: 16px;
+    font-size: 15px;
+    white-space: nowrap;
   }
   .combo-name {
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     color: var(--header-color);
-    font-size: 16px;
+    font-size: 14px;
   }
   .alt-name {
     color: var(--btn-text);
     font-style: italic;
+    font-size: 13px;
   }
   .variant-note {
     font-size: 11px;
@@ -375,6 +380,7 @@
     <button class="filter-btn" onclick="setFilter('4', this)">Quads (4)</button>
   </div>
   <div class="action-row">
+    <button class="sort-btn" id="sortToggleBtn" onclick="toggleSort()">Sort: Default</button>
     <button class="toggle-btn" id="viewToggleBtn" onclick="toggleView()">Compact View</button>
     <button class="theme-btn" id="themeToggleBtn" onclick="toggleTheme()">Light Theme</button>
   </div>
@@ -448,13 +454,15 @@
     { ids: "5 / 79", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "TRON", altName: "", variantNote: "" },
     { ids: "36 / 79", count: 2, colors: [{ name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "OREO", altName: "SKELETON/STORMTROOPER", variantNote: "" },
     { ids: "68 / 79", count: 2, colors: [{ name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "PLAYBOY", altName: "", variantNote: "Can use 218 instead" },
+    { ids: "218 / 79", count: 2, colors: [{ name: "218 - Lust Coloring", hex: "#d81b60", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "BLACK CHERRY", altName: "PLAYBOY", variantNote: "" },
     { ids: "75 / 79", count: 2, colors: [{ name: "75 - Orange", hex: "#ffa500", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "PUMPKIN", altName: "", variantNote: "Can use 139 instead" },
     { ids: "84 / 79", count: 2, colors: [{ name: "84 - Mint", hex: "#98ff98", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "THIN MINT", altName: "ALCHEMY", variantNote: "" },
-    { ids: "96 / 79", count: 2, colors: [{ name: "96 - Glacial", hex: "#87ceeb", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "BLACK ICE", altName: "", variantNote: "" },
+    { ids: "96 / 79", count: 2, colors: [{ name: "96 - Glacial", hex: "#87ceeb", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "BLACK ICE", altName: "POWDER KEG", variantNote: "" },
     { ids: "203 / 79", count: 2, colors: [{ name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "NIGHTMARE", altName: "RAVEN", variantNote: "" },
     { ids: "245 / 79", count: 2, colors: [{ name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "ANUBIS", altName: "ROYAL / VIP", variantNote: "" },
     { ids: "1 / 36", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "ALPHA", altName: "PENNYWISE", variantNote: "" },
-    { ids: "2 / 36", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "PORCELAIN", altName: "TIDAL WAVE", variantNote: "" },
+    { ids: "2 / 36", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "PORCELAIN", altName: "TIDAL WAVE / TIDAL SPECKLE", variantNote: "Can use 195 instead of 2" },
+    { ids: "3 / 36", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "MATCHA", altName: "WHATSAPP / SPRITE", variantNote: "" },
     { ids: "4 / 36", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "ZEUS", altName: "HALO / ANGELIC / YELLOW SNOW", variantNote: "" },
     { ids: "5 / 36", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "FREEZE", altName: "TIFFANY", variantNote: "" },
     { ids: "6 / 36", count: 2, colors: [{ name: "6 - Magenta", hex: "#ff00ff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "MAGENTA SNOW", altName: "", variantNote: "Can use 68 instead" },
@@ -466,9 +474,9 @@
     { ids: "245 / 36", count: 2, colors: [{ name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "GILDED MARBLE", altName: "", variantNote: "" },
     { ids: "212 / 36", count: 2, colors: [{ name: "212 - Pink Coloring", hex: "#ff69b4", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "STRAWBERRY MILK", altName: "PASTEL BARBIE", variantNote: "" },
     { ids: "5 / 202", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "202 - Indigo", hex: "#683492", darkText: true }], name: "WINTERBERRY", altName: "", variantNote: "" },
-    { ids: "1 / 2", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }], name: "SPIDERMAN", altName: "", variantNote: "" },
+    { ids: "1 / 2", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }], name: "SPIDERMAN", altName: "SUPERMAN", variantNote: "" },
+    { ids: "1 / 4", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }], name: "IRON MAN", altName: "FLASH", variantNote: "Can use 131 instead of 1, or 245 instead of 4" },
     { ids: "1 / 5", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "5 - Cyan", hex: "#00ffff", darkText: false }], name: "SLUSHY", altName: "", variantNote: "" },
-    { ids: "1 / 85", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "85 - Jade", hex: "#00a86b", darkText: false }], name: "X-MAS", altName: "", variantNote: "" },
     { ids: "2 / 3", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "3 - Green", hex: "#00ff00", darkText: false }], name: "NEON", altName: " OCEANIC / EARTH & WATER / GAIA", variantNote: "" },
     { ids: "2 / 5", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "5 - Cyan", hex: "#00ffff", darkText: false }], name: "ABYSSAL", altName: "", variantNote: "" },
     { ids: "2 / 6", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "6 - Magenta", hex: "#ff00ff", darkText: false }], name: "BUBBLEGUM", altName: "", variantNote: "Can use 68 instead" },
@@ -482,21 +490,22 @@
     { ids: "3 / 4", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }], name: "LEMON LIME", altName: "", variantNote: "" },
     { ids: "3 / 68", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "68 - Deep Pink", hex: "#ff1493", darkText: false }], name: "WATERMELON", altName: "RASPBERRY TWIST", variantNote: "Can use 218 instead of 68" },
     { ids: "3 / 203", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }], name: "JOKER", altName: "", variantNote: "" },
+    { ids: "75 / 2", count: 2, colors: [{ name: "75 - Orange", hex: "#ffa500", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }], name: "GOKU", altName: "DRAGON BALL / NERF", variantNote: "" },
     { ids: "4 / 2", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }], name: "WOLVERINE", altName: "", variantNote: "" },
     { ids: "4 / 6", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "6 - Magenta", hex: "#ff00ff", darkText: false }], name: "PINK LEMONADE", altName: "STRAWBERRY LEMONADE", variantNote: "Can use 68 instead" },
     { ids: "4 / 187", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "187 - Azure Coloring", hex: "#007fff", darkText: true }], name: "VAULT-TEC", altName: "FALLOUT", variantNote: "Can use 65 (Powder Blue) instead" },
     { ids: "4 / 5", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "5 - Cyan", hex: "#00ffff", darkText: false }], name: "CALYPSO", altName: "", variantNote: "" },
     { ids: "94 / 96", count: 2, colors: [{ name: "94 - Teal", hex: "#008080", darkText: true }, { name: "96 - Glacial", hex: "#87ceeb", darkText: false }], name: "FROZEN", altName: "", variantNote: "" },
     { ids: "201 / 245", count: 2, colors: [{ name: "201 - Eminence Purple", hex: "#4b0082", darkText: true }, { name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }], name: "SPYRO", altName: "", variantNote: "Can use 203 instead" },
-    { ids: "131 / 245", count: 2, colors: [{ name: "131 - Red Colouring", hex: "#d22b2b", darkText: true }, { name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }], name: "IRON MAN", altName: "", variantNote: "" },
     { ids: "203 / 245", count: 2, colors: [{ name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }, { name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }], name: "MONARCH", altName: "LAKERS / SPYRO", variantNote: "Can use 201 instead" },
     { ids: "67 / 79 / 36", count: 3, colors: [{ name: "67 - Light Pink", hex: "#ebb0ff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "KUROMI", altName: "", variantNote: "" },
     { ids: "1 / 2 / 36", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "PATRIOT", altName: "USA", variantNote: "" },
+    { ids: "1 / 3 / 79", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "DARK CHRISTMAS", altName: "BLACK CHRISTMAS", variantNote: "" },
+    { ids: "1 / 4 / 79", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "LAVA", altName: "FIREBALL", variantNote: "" },
     { ids: "1 / 36 / 85", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "85 - Jade", hex: "#00a86b", darkText: false }], name: "MEXICO", altName: "ITALY", variantNote: "" },
     { ids: "5 / 6 / 36", count: 3, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "6 - Magenta", hex: "#ff00ff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "BIRTHDAY CAKE", altName: "", variantNote: "Can use 68 instead" },
     { ids: "1 / 5 / 79", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "GLITCH", altName: "3-D", variantNote: "" },
     { ids: "1 / 36 / 79", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "HARLEY QUINN", altName: "", variantNote: "" },
-    { ids: "1 / 85 / 79", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "85 - Jade", hex: "#00a86b", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "BLACK CHRISTMAS", altName: "", variantNote: "" },
     { ids: "2 / 4 / 79", count: 3, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "TRUE WOLVERINE", altName: "", variantNote: "" },
     { ids: "4 / 76 / 79", count: 3, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "76 - Peach", hex: "#ffdab9", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "HOTROD", altName: "", variantNote: "" },
     { ids: "5 / 68 / 79", count: 3, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "GALAXY", altName: "", variantNote: "" },
@@ -504,45 +513,48 @@
     { ids: "36 / 68 / 79", count: 3, colors: [{ name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "GOTH BARBIE", altName: "DRACULAURA", variantNote: "" },
     { ids: "68 / 79 / 203", count: 3, colors: [{ name: "6 - Magenta", hex: "#ff00ff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }], name: "MAGENTA GOTH", altName: "", variantNote: "Can use 68 instead" },
     { ids: "75 / 79 / 203", count: 3, colors: [{ name: "75 - Orange", hex: "#ffa500", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }], name: "HOLLOWEEN", altName: "SPOOKY / TRICK OR TREAT", variantNote: "Can use 139 instead" },
+    { ids: "79 / 1 / 11", count: 3, colors: [{ name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "11 - Light Yellow", hex: "#ffff7a", darkText: true }], name: "DAREDEVIL", altName: "", variantNote: "" },
     { ids: "3 / 79 / 203", count: 3, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }], name: "BEETLEJUICE", altName: "DARK JOKER / POSION", variantNote: "" },
     { ids: "1 / 3 / 4", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }], name: "RASTA", altName: "PORTUGAL", variantNote: "" },
     { ids: "1 / 75 / 245", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "75 - Orange", hex: "#ffa500", darkText: false }, { name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }], name: "FYYR", altName: "FIRE", variantNote: "Can use 131 instead of 1, or 139 instead of 75" },
     { ids: "79 / 203 / 36", count: 3, colors: [{ name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "TWILIGHT", altName: "", variantNote: "" },
+    { ids: "203 / 3 / 245", count: 3, colors: [{ name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }, { name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }], name: "MARDI GRAS", altName: "CARNIVAL", variantNote: "" },
     { ids: "1 / 2 / 3 / 4", count: 4, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }], name: "RAINBOW", altName: "LEGO", variantNote: "" },
     { ids: "36 / 67 / 187", count: 3, colors: [{ name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "67 - Light Pink", hex: "#ebb0ff", darkText: false }, { name: "187 - Azure Coloring", hex: "#007fff", darkText: true }], name: "TRANS PRIDE", altName: "", variantNote: "" },
     { ids: "217 / 5 / 79", count: 3, colors: [{ name: "217 - Tyrian Colouring", hex: "#660033", darkText: true }, { name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "NEBULA", altName: "", variantNote: "" },
-    { ids: "31 / 84 / 194 / 252", count: 4, colors: [{ name: "31 - Dino Dark Purple", hex: "#2b2638", darkText: true }, { name: "84 - Mint", hex: "#98ff98", darkText: false }, { name: "194 - Cobalt", hex: "#0047ab", darkText: true }, { name: "252 - Dusk", hex: "#483d8b", darkText: true }], name: "NEBULA", altName: "", variantNote: "" }
+    { ids: "31 / 84 / 194 / 252", count: 4, colors: [{ name: "31 - Dino Dark Purple", hex: "#2b2638", darkText: true }, { name: "84 - Mint", hex: "#98ff98", darkText: false }, { name: "194 - Cobalt", hex: "#0047ab", darkText: true }, { name: "252 - Dusk", hex: "#483d8b", darkText: true }], name: "COSMIC NEBULA", altName: "", variantNote: "" }
   ];
 
   let currentFilter = 'all';
-  let isCompact = false;
+  let isDetailed = true;
+  let isSorted = false;
 
   function renderTable(data) {
     const tbody = document.querySelector("#comboTable tbody");
     const colorsHeader = document.getElementById("colorsHeader");
     tbody.innerHTML = "";
 
-    colorsHeader.style.display = isCompact ? "none" : "";
+    colorsHeader.style.display = "";
 
     data.forEach(combo => {
       const tr = document.createElement("tr");
       tr.setAttribute("data-count", combo.count);
       
       let colorsHtml = "";
-      if (!isCompact) {
+      if (isDetailed) {
         combo.colors.forEach(c => {
           const textClass = c.darkText ? "dark-text" : "";
           colorsHtml += `<div class="color-block ${textClass}" style="background-color: ${c.hex}">${c.name}</div><br>`;
         });
       } else {
-        colorsHtml = combo.colors.map(c => c.name).join(" + ");
+        colorsHtml = combo.colors.map(c => c.name).join("<br>");
       }
 
       let noteHtml = combo.variantNote ? `<div class="variant-note">💡 ${combo.variantNote}</div>` : '';
 
       tr.innerHTML = `
         <td class="combo-ids" onclick="copyText('${combo.ids}')" title="Tap to copy">${combo.ids}</td>
-        ${!isCompact ? `<td>${colorsHtml}</td>` : ''}
+        <td>${colorsHtml}</td>
         <td class="combo-name" onclick="copyText('${combo.name}')" title="Tap to copy">${combo.name}</td>
         <td class="alt-name">${combo.altName}${noteHtml}</td>
       `;
@@ -563,9 +575,9 @@
   }
 
   function toggleView() {
-    isCompact = !isCompact;
+    isDetailed = !isDetailed;
     const btn = document.getElementById("viewToggleBtn");
-    btn.textContent = isCompact ? "Detailed View" : "Compact View";
+    btn.textContent = isDetailed ? "Compact View" : "Detailed View";
     renderTable(getFilteredData());
   }
 
@@ -573,6 +585,15 @@
     document.body.classList.toggle("light-theme");
     const btn = document.getElementById("themeToggleBtn");
     btn.textContent = document.body.classList.contains("light-theme") ? "Dark Theme" : "Light Theme";
+  }
+
+  function toggleSort() {
+    isSorted = !isSorted;
+    const btn = document.getElementById("sortToggleBtn");
+    btn.textContent = isSorted ? "Sort: Grouped A-Z" : "Sort: Default";
+    btn.style.backgroundColor = isSorted ? "var(--accent-color)" : "";
+    btn.style.color = isSorted ? "#ffffff" : "";
+    renderTable(getFilteredData());
   }
 
   function toggleGuide() {
@@ -599,17 +620,27 @@
 
   function getFilteredData() {
     const query = document.getElementById("searchBox").value.toLowerCase();
-    return combos.filter(combo => {
+    let filtered = combos.filter(combo => {
       const fullText = (combo.ids + " " + combo.name + " " + combo.altName + " " + (combo.variantNote || "") + " " + combo.colors.map(c => c.name).join(" ")).toLowerCase();
       const matchesSearch = fullText.includes(query);
       const matchesFilter = (currentFilter === 'all' || combo.count.toString() === currentFilter);
       return matchesSearch && matchesFilter;
     });
+
+    if (isSorted) {
+      filtered.sort((a, b) => {
+        if (a.count !== b.count) {
+          return a.count - b.count;
+        }
+        return a.name.localeCompare(b.name);
+      });
+    }
+
+    return filtered;
   }
 
   function filterTable() {
-    const filtered = getFilteredData();
-    renderTable(filtered);
+    renderTable(getFilteredData());
   }
 
   function setFilter(filterType, btn) {
