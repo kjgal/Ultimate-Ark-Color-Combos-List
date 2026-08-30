@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARK Color Combinations</title>
-<!-- Import Bitcount Prop Double and Share Tech Mono from Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -370,7 +369,6 @@
   A living, community-driven dictionary for ARK color combos. Know a different alt-name for a color combo or I'm missing some? Submit&nbsp;it&nbsp;below!
 </div>
 
-<!-- Search, Filters, View Toggle & Theme Switcher -->
 <div class="controls-container">
   <input type="text" id="searchBox" placeholder="Search combinations, colors, or names..." onkeyup="filterTable()">
   <div class="filter-buttons">
@@ -386,10 +384,8 @@
   </div>
 </div>
 
-<!-- Quick Stats Counter -->
 <div class="stats-counter" id="statsCounter">Showing all combinations</div>
 
-<!-- Region Mapping Reference Guide Accordion -->
 <div class="guide-container">
   <div class="guide-header" onclick="toggleGuide()">
     <span>📖 Quick ARK Color Regions Guide</span>
@@ -416,12 +412,10 @@
       </tr>
     </thead>
     <tbody>
-      <!-- Injected via JS -->
-    </tbody>
+      </tbody>
   </table>
 </div>
 
-<!-- Missing Combos & Suggestions Panel with Discord Webhook -->
 <div class="notes-container">
   <h3>Missing Combos & Suggestions</h3>
   <div class="notes-subtitle">Drop any missing color combinations or feedback below!</div>
@@ -431,7 +425,6 @@
     <div class="form-footer">
       <button type="submit" style="padding: 9px 16px; background-color: var(--accent-color); color: #000000; border: none; border-radius: 6px; cursor: pointer; font-family: 'Share Tech Mono', monospace; font-weight: bold; text-transform: uppercase;">Send to Discord</button>
       
-      <!-- Responsive Links Group -->
       <div class="links-group">
         <a href="https://www.arkimplant.com/dinos?species=rex" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: none; font-size: 13px; font-weight: bold;">ARK Implant Tool &rarr;</a>
         <a href="https://arkutils.netlify.app/tools/howmanyfemales" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: none; font-size: 13px; font-weight: bold;">Mutation Probability &rarr;</a>
@@ -441,11 +434,11 @@
   <div id="formStatus" style="font-size: 12px; margin-top: 6px; color: #00ffaa;"></div>
 </div>
 
-<!-- Copy Notification Toast -->
 <div id="toast">Copied to Clipboard!</div>
 
 <script>
   const combos = [
+    // --- 2-COLOR COMBOS (DUOS) ---
     { ids: "1 / 79", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "DEADPOOL", altName: "", variantNote: "Can use 131 instead" },
     { ids: "2 / 79", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "SUB-ZERO", altName: "", variantNote: "Can use 195 or 187 instead" },
     { ids: "3 / 79", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "MONSTER", altName: "", variantNote: "Can use 88 for Toxic Monster instead" },
@@ -481,7 +474,6 @@
     { ids: "2 / 3", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "3 - Green", hex: "#00ff00", darkText: false }], name: "NEON", altName: " OCEANIC / EARTH & WATER / GAIA", variantNote: "" },
     { ids: "2 / 5", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "5 - Cyan", hex: "#00ffff", darkText: false }], name: "ABYSSAL", altName: "", variantNote: "" },
     { ids: "2 / 6", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "6 - Magenta", hex: "#ff00ff", darkText: false }], name: "BUBBLEGUM", altName: "", variantNote: "Can use 68 instead" },
-    { ids: "2 / 68 / 79", count: 3, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "MIDNIGHT ORCHID", altName: "", variantNote: "" },
     { ids: "3 / 31", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "31 - Dino Dark Purple", hex: "#2b2638", darkText: true }], name: "WONKA", altName: "", variantNote: "" },
     { ids: "5 / 3", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "3 - Green", hex: "#00ff00", darkText: false }], name: "TIDAL", altName: "", variantNote: "" },
     { ids: "5 / 6", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "6 - Magenta", hex: "#ff00ff", darkText: false }], name: "COTTON CANDY", altName: "", variantNote: "Can use 68 instead" },
@@ -499,6 +491,9 @@
     { ids: "94 / 96", count: 2, colors: [{ name: "94 - Teal", hex: "#008080", darkText: true }, { name: "96 - Glacial", hex: "#87ceeb", darkText: false }], name: "FROZEN", altName: "", variantNote: "" },
     { ids: "201 / 245", count: 2, colors: [{ name: "201 - Eminence Purple", hex: "#4b0082", darkText: true }, { name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }], name: "SPYRO", altName: "", variantNote: "Can use 203 instead" },
     { ids: "203 / 245", count: 2, colors: [{ name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }, { name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }], name: "MONARCH", altName: "LAKERS / SPYRO", variantNote: "Can use 201 instead" },
+
+    // --- 3-COLOR COMBOS (TRIOS) ---
+    { ids: "2 / 68 / 79", count: 3, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "MIDNIGHT ORCHID", altName: "", variantNote: "" },
     { ids: "67 / 79 / 36", count: 3, colors: [{ name: "67 - Light Pink", hex: "#ebb0ff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "KUROMI", altName: "", variantNote: "" },
     { ids: "1 / 2 / 36", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "PATRIOT", altName: "USA", variantNote: "" },
     { ids: "1 / 3 / 79", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "DARK CHRISTMAS", altName: "BLACK CHRISTMAS", variantNote: "" },
@@ -520,10 +515,14 @@
     { ids: "1 / 75 / 245", count: 3, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "75 - Orange", hex: "#ffa500", darkText: false }, { name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }], name: "FYYR", altName: "FIRE", variantNote: "Can use 131 instead of 1, or 139 instead of 75" },
     { ids: "79 / 203 / 36", count: 3, colors: [{ name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "TWILIGHT", altName: "", variantNote: "" },
     { ids: "203 / 3 / 245", count: 3, colors: [{ name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }, { name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }], name: "MARDI GRAS", altName: "CARNIVAL", variantNote: "" },
-    { ids: "1 / 2 / 3 / 4", count: 4, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }], name: "RAINBOW", altName: "LEGO", variantNote: "" },
     { ids: "36 / 67 / 187", count: 3, colors: [{ name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "67 - Light Pink", hex: "#ebb0ff", darkText: false }, { name: "187 - Azure Coloring", hex: "#007fff", darkText: true }], name: "TRANS PRIDE", altName: "", variantNote: "" },
     { ids: "217 / 5 / 79", count: 3, colors: [{ name: "217 - Tyrian Colouring", hex: "#660033", darkText: true }, { name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "NEBULA", altName: "", variantNote: "" },
-    { ids: "79 / 252 / 194 / 3", count: 4, colors: [{ name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "252 - Dusk", hex: "#483d8b", darkText: true }, { name: "194 - Cobalt", hex: "#0047ab", darkText: true }, { name: "3 - Green", hex: "#00ff00", darkText: false }], name: "OBSIDIAN ORCHID", altName: "NETHERGLOW", variantNote: "" }
+    { ids: "5 / 36 / 79", count: 3, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "FROSTBITE", altName: "", variantNote: "" },
+
+    // --- 4-COLOR COMBOS (QUADS) ---
+    { ids: "1 / 2 / 3 / 4", count: 4, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }], name: "RAINBOW", altName: "LEGO", variantNote: "" },
+    { ids: "79 / 252 / 194 / 3", count: 4, colors: [{ name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "252 - Dusk", hex: "#483d8b", darkText: true }, { name: "194 - Cobalt", hex: "#0047ab", darkText: true }, { name: "3 - Green", hex: "#00ff00", darkText: false }], name: "OBSIDIAN ORCHID", altName: "NETHERGLOW", variantNote: "" },
+    { ids: "31 / 84 / 194 / 252", count: 4, colors: [{ name: "31 - Dino Dark Purple", hex: "#2b2638", darkText: true }, { name: "84 - Mint", hex: "#98ff98", darkText: false }, { name: "194 - Cobalt", hex: "#0047ab", darkText: true }, { name: "252 - Dusk", hex: "#483d8b", darkText: true }], name: "COSMIC NEBULA", altName: "", variantNote: "" }
   ];
 
   let currentFilter = 'all';
