@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARK Color Combinations</title>
-<!-- Import Bitcount Prop Double and Share Tech Mono from Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -467,7 +466,6 @@
     { ids: "3 / 36", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "MATCHA", altName: "WHATSAPP / SPRITE", variantNote: "" },
     { ids: "4 / 36", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "ZEUS", altName: "HALO / ANGELIC / YELLOW SNOW", variantNote: "" },
     { ids: "5 / 36", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "FREEZE", altName: "TIFFANY", variantNote: "" },
-    { ids: "6 / 36", count: 2, colors: [{ name: "6 - Magenta", hex: "#ff00ff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "MAGENTA SNOW", altName: "", variantNote: "Can use 68 instead" },
     { ids: "67 / 36", count: 2, colors: [{ name: "67 - Light Pink", hex: "#ebb0ff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "CHERRY BLOSSOM", altName: "", variantNote: "" },
     { ids: "68 / 36", count: 2, colors: [{ name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "BARBIE", altName: "", variantNote: "" },
     { ids: "75 / 36", count: 2, colors: [{ name: "75 - Orange", hex: "#ffa500", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "ORANGESICLE", altName: "DREAMSICLE / SOLERO / KOI", variantNote: "Can use 139 instead" },
@@ -561,11 +559,27 @@
 
       let noteHtml = combo.variantNote ? `<div class="variant-note">💡 ${combo.variantNote}</div>` : '';
 
+      // Update Pink Lemonade (4 / 6) to use 68 as main and 6 as alt
+      let currentAltName = combo.altName;
+      let currentVariantNote = combo.variantNote;
+      if (combo.name === "PINK LEMONADE") {
+        combo.colors = [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "68 - Deep Pink", hex: "#ff1493", darkText: false }];
+        combo.ids = "4 / 68";
+        currentAltName = "STRAWBERRY LEMONADE";
+        currentVariantNote = "Can use 6 instead";
+        if (isDetailed) {
+          colorsHtml = `<div class="color-block" style="background-color: #ffff00">4 - Yellow</div><br><div class="color-block" style="background-color: #ff1493">68 - Deep Pink</div><br>`;
+        } else {
+          colorsHtml = "4 - Yellow<br>68 - Deep Pink";
+        }
+        noteHtml = `<div class="variant-note">💡 ${currentVariantNote}</div>`;
+      }
+
       tr.innerHTML = `
         <td class="combo-ids" onclick="copyText('${combo.ids}')" title="Tap to copy">${combo.ids}</td>
         <td>${colorsHtml}</td>
         <td class="combo-name" onclick="copyText('${combo.name}')" title="Tap to copy">${combo.name}</td>
-        <td class="alt-name">${combo.altName}${noteHtml}</td>
+        <td class="alt-name">${currentAltName}${noteHtml}</td>
       `;
       tbody.appendChild(tr);
     });
