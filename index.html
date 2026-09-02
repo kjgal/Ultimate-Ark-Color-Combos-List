@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARK Color Combinations</title>
+<!-- Import Bitcount Prop Double and Share Tech Mono from Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -369,6 +370,7 @@
   A living, community-driven dictionary for ARK color combos. Know a different alt-name for a color combo or I'm missing some? Submit&nbsp;it&nbsp;below!
 </div>
 
+<!-- Search, Filters, View Toggle & Theme Switcher -->
 <div class="controls-container">
   <input type="text" id="searchBox" placeholder="Search combinations, colors, or names..." onkeyup="filterTable()">
   <div class="filter-buttons">
@@ -384,8 +386,10 @@
   </div>
 </div>
 
+<!-- Quick Stats Counter -->
 <div class="stats-counter" id="statsCounter">Showing all combinations</div>
 
+<!-- Region Mapping Reference Guide Accordion -->
 <div class="guide-container">
   <div class="guide-header" onclick="toggleGuide()">
     <span>📖 Quick ARK Color Regions Guide</span>
@@ -412,10 +416,12 @@
       </tr>
     </thead>
     <tbody>
-      </tbody>
+      <!-- Injected via JS -->
+    </tbody>
   </table>
 </div>
 
+<!-- Missing Combos & Suggestions Panel with Discord Webhook -->
 <div class="notes-container">
   <h3>Missing Combos & Suggestions</h3>
   <div class="notes-subtitle">Drop any missing color combinations or feedback below!</div>
@@ -425,6 +431,7 @@
     <div class="form-footer">
       <button type="submit" style="padding: 9px 16px; background-color: var(--accent-color); color: #000000; border: none; border-radius: 6px; cursor: pointer; font-family: 'Share Tech Mono', monospace; font-weight: bold; text-transform: uppercase;">Send to Discord</button>
       
+      <!-- Responsive Links Group -->
       <div class="links-group">
         <a href="https://www.arkimplant.com/dinos?species=rex" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: none; font-size: 13px; font-weight: bold;">ARK Implant Tool &rarr;</a>
         <a href="https://arkutils.netlify.app/tools/howmanyfemales" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: none; font-size: 13px; font-weight: bold;">Mutation Probability &rarr;</a>
@@ -434,6 +441,7 @@
   <div id="formStatus" style="font-size: 12px; margin-top: 6px; color: #00ffaa;"></div>
 </div>
 
+<!-- Copy Notification Toast -->
 <div id="toast">Copied to Clipboard!</div>
 
 <script>
@@ -460,6 +468,7 @@
     { ids: "4 / 36", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "ZEUS", altName: "HALO / ANGELIC / YELLOW SNOW", variantNote: "" },
     { ids: "5 / 36", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "FREEZE", altName: "TIFFANY", variantNote: "" },
     { ids: "6 / 36", count: 2, colors: [{ name: "6 - Magenta", hex: "#ff00ff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "MAGENTA SNOW", altName: "", variantNote: "Can use 68 instead" },
+    { ids: "67 / 36", count: 2, colors: [{ name: "67 - Light Pink", hex: "#ebb0ff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "CHERRY BLOSSOM", altName: "", variantNote: "" },
     { ids: "68 / 36", count: 2, colors: [{ name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "BARBIE", altName: "", variantNote: "" },
     { ids: "75 / 36", count: 2, colors: [{ name: "75 - Orange", hex: "#ffa500", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "ORANGESICLE", altName: "DREAMSICLE / SOLERO / KOI", variantNote: "Can use 139 instead" },
     { ids: "96 / 36", count: 2, colors: [{ name: "96 - Glacial", hex: "#87ceeb", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "WINTER", altName: "GLACIAL SNOW", variantNote: "" },
