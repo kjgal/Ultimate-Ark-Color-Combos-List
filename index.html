@@ -296,6 +296,13 @@
     color: var(--btn-text);
     margin-bottom: 10px;
     font-style: italic;
+    line-height: 1.5;
+  }
+  .mobile-warning {
+    display: inline-block;
+    color: #ff6b6b;
+    font-weight: bold;
+    margin-top: 6px;
   }
   #suggestionInput {
     width: 100%;
@@ -423,7 +430,10 @@
 <!-- Missing Combos & Suggestions Panel with Discord Webhook -->
 <div class="notes-container">
   <h3>Missing Combos & Suggestions</h3>
-  <div class="notes-subtitle">Drop any missing color combinations or feedback below!</div>
+  <div class="notes-subtitle">
+    Drop any missing color combinations or feedback below!<br>
+    <span class="mobile-warning">📱 On Mobile? Make sure to scroll the table all the way to the right to check Alternative Names before submitting!</span>
+  </div>
   
   <form id="suggestionForm" onsubmit="sendToDiscord(event)">
     <textarea id="suggestionInput" placeholder="Type your suggestion here..." required></textarea>
@@ -500,6 +510,7 @@
     { ids: "203 / 245", count: 2, colors: [{ name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }, { name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }], name: "MONARCH", altName: "LAKERS / SPYRO", variantNote: "Can use 201 instead" },
 
     // --- 3-COLOR COMBOS (TRIOS) ---
+    { ids: "3 / 36 / 79", count: 3, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "RADIOACTIVE", altName: "", variantNote: "" },
     { ids: "88 / 79 / 68", count: 3, colors: [{ name: "88 - Lemon Lime", hex: "#acfe44", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "68 - Deep Pink", hex: "#ff1493", darkText: false }], name: "LIME ORCHID", altName: "", variantNote: "" },
     { ids: "2 / 68 / 79", count: 3, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "MIDNIGHT ORCHID", altName: "", variantNote: "" },
     { ids: "67 / 79 / 36", count: 3, colors: [{ name: "67 - Light Pink", hex: "#ebb0ff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "KUROMI", altName: "", variantNote: "" },
