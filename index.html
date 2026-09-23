@@ -463,6 +463,7 @@
     { ids: "4 / 79", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "BATMAN", altName: "BUMBLE-BEE", variantNote: "" },
     { ids: "5 / 79", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "TRON", altName: "", variantNote: "" },
     { ids: "36 / 79", count: 2, colors: [{ name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "OREO", altName: "SKELETON/STORMTROOPER", variantNote: "" },
+    { ids: "67 / 79", count: 2, colors: [{ name: "67 - Light Pink", hex: "#ebb0ff", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "LIGHTMARE", altName: "", variantNote: "" },
     { ids: "68 / 79", count: 2, colors: [{ name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "PLAYBOY", altName: "", variantNote: "Can use 218 instead" },
     { ids: "218 / 79", count: 2, colors: [{ name: "218 - Lust Coloring", hex: "#d81b60", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "BLACK CHERRY", altName: "PLAYBOY", variantNote: "" },
     { ids: "75 / 79", count: 2, colors: [{ name: "75 - Orange", hex: "#ffa500", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "PUMPKIN", altName: "", variantNote: "Can use 139 instead" },
@@ -544,6 +545,25 @@
     { ids: "79 / 252 / 194 / 3", count: 4, colors: [{ name: "79 - Actual Black", hex: "#000000", darkText: true }, { name: "252 - Dusk", hex: "#483d8b", darkText: true }, { name: "194 - Cobalt", hex: "#0047ab", darkText: true }, { name: "3 - Green", hex: "#00ff00", darkText: false }], name: "OBSIDIAN ORCHID", altName: "NETHERGLOW", variantNote: "" },
     { ids: "31 / 84 / 194 / 252", count: 4, colors: [{ name: "31 - Dino Dark Purple", hex: "#2b2638", darkText: true }, { name: "84 - Mint", hex: "#98ff98", darkText: false }, { name: "194 - Cobalt", hex: "#0047ab", darkText: true }, { name: "252 - Dusk", hex: "#483d8b", darkText: true }], name: "COSMIC NEBULA", altName: "", variantNote: "" }
   ];
+
+  // Auto-append common color alternates to the variant notes
+  combos.forEach(combo => {
+    let notes = [];
+    const idArray = combo.ids.split(" / ");
+    
+    if (idArray.includes("3")) notes.push("Can use 163 for 3");
+    if (idArray.includes("79")) notes.push("Can use 224 for 79");
+    if (idArray.includes("203")) notes.push("Can use 201 or 202 for 203");
+    
+    if (notes.length > 0) {
+      let suffix = notes.join(" | ");
+      if (combo.variantNote && combo.variantNote !== "Can use 201 instead") {
+         combo.variantNote += " | " + suffix;
+      } else {
+         combo.variantNote = suffix;
+      }
+    }
+  });
 
   let currentFilter = 'all';
   let isDetailed = true;
