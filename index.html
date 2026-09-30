@@ -19,6 +19,10 @@
 <body>
 <main class="app-shell">
   <header class="masthead">
+    <div class="install-wrap">
+      <button type="button" class="install-btn" id="installAppBtn">↓ Install app</button>
+      <p class="install-help" id="installHelp" role="status" hidden></p>
+    </div>
     <div class="eyebrow">ARK / Community Field Guide</div>
     <h1>ARK Color Combinations</h1>
     <p class="mission-statement">A living, community-driven dictionary for ARK color combos. Know a different alt-name for a color combo or I'm missing some? Submit&nbsp;it&nbsp;below!</p>
@@ -93,10 +97,6 @@
     </form>
     <div id="formStatus"></div>
   </section>
-  <footer class="install-wrap">
-    <button type="button" class="install-btn" id="installAppBtn">↓ &nbsp; Install App</button>
-    <p class="install-help" id="installHelp" role="status" hidden></p>
-  </footer>
 </main>
 <div id="toast" role="status" aria-live="polite">Copied to Clipboard!</div>
 <script src="./suggestions-config.js"></script>
