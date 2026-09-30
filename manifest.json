@@ -1,6 +1,7 @@
 {
   "name": "ARK Color Combinations",
   "short_name": "ARK Colors",
+  "id": "./",
   "description": "A community dictionary of ARK color combinations",
   "start_url": "./",
   "scope": "./",
