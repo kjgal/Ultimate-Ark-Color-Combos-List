@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ark-color-tablets-v37';
+const CACHE_NAME = 'ark-color-tablets-v38';
 const ASSETS = ['./', './index.html', './app.css', './suggestions-config.js', './slate-cliff-edges.webp', './stone-tablet-original.jpg', './raptor-roar.gif', './raptor-sniff.gif', './manifest.json', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
