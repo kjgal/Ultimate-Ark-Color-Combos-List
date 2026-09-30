@@ -6,453 +6,93 @@
 <title>ARK Color Combinations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-<style>
-  :root {
-    --bg-gradient: linear-gradient(rgba(5, 7, 10, 0.82), rgba(3, 5, 7, 0.92)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9Xi2j-FhpzfapkiCSM1sYuQQWjZFGFLlaA7yCsRG3RkT-Qo6iUNGc74o&s=10');
-    --text-color: #e0e0e0;
-    --header-color: #f0f0f0;
-    --container-bg: rgba(10, 12, 15, 0.3);
-    --container-border: rgba(255, 255, 255, 0.2);
-    --table-header-bg: rgba(15, 18, 22, 0.95);
-    --row-even: rgba(255, 255, 255, 0.03);
-    --row-hover: rgba(255, 255, 255, 0.1);
-    --input-bg: rgba(10, 12, 15, 0.6);
-    --btn-bg: rgba(15, 18, 22, 0.7);
-    --btn-text: #c0c5cd;
-    --accent-color: #00ffaa;
-  }
-
-  body.light-theme {
-    --bg-gradient: linear-gradient(rgba(240, 242, 245, 0.9), rgba(220, 225, 230, 0.95)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9Xi2j-FhpzfapkiCSM1sYuQQWjZFGFLlaA7yCsRG3RkT-Qo6iUNGc74o&s=10');
-    --text-color: #212529;
-    --header-color: #111315;
-    --container-bg: rgba(255, 255, 255, 0.7);
-    --container-border: rgba(0, 0, 0, 0.15);
-    --table-header-bg: rgba(220, 225, 230, 0.98);
-    --row-even: rgba(0, 0, 0, 0.03);
-    --row-hover: rgba(0, 0, 0, 0.08);
-    --input-bg: rgba(255, 255, 255, 0.8);
-    --btn-bg: rgba(230, 235, 240, 0.9);
-    --btn-text: #33383e;
-    --accent-color: #007755;
-  }
-
-  body {
-    font-family: 'Share Tech Mono', monospace, sans-serif;
-    background: var(--bg-gradient);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: var(--text-color);
-    margin: 0;
-    padding: 15px;
-    min-height: 100vh;
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-  h1 { 
-    text-align: center; 
-    color: var(--header-color); 
-    font-family: 'Bitcount Prop Double', sans-serif;
-    text-transform: uppercase; 
-    letter-spacing: 4px; 
-    font-size: 30px;
-    text-shadow: 0 0 18px rgba(255, 255, 255, 0.4), 2px 2px 6px rgba(0,0,0,0.3);
-    margin-bottom: 5px;
-    border-bottom: 2px solid var(--container-border);
-    padding-bottom: 12px;
-  }
-  .mission-statement {
-    text-align: center;
-    font-size: 14px;
-    color: var(--accent-color);
-    margin-bottom: 20px;
-    font-style: italic;
-    line-height: 1.4;
-  }
-  .controls-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
-  #searchBox {
-    width: 100%;
-    padding: 12px 15px;
-    box-sizing: border-box;
-    border-radius: 8px;
-    border: 1px solid var(--container-border);
-    background-color: var(--input-bg);
-    backdrop-filter: blur(4px);
-    color: var(--text-color);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 16px;
-    outline: none;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
-  }
-  #searchBox::placeholder {
-    color: #8892b0;
-  }
-  .filter-buttons {
-    display: flex;
-    gap: 6px;
-    width: 100%;
-  }
-  .filter-btn {
-    flex: 1;
-    padding: 9px 2px;
-    background-color: var(--btn-bg);
-    border: 1px solid var(--container-border);
-    color: var(--btn-text);
-    border-radius: 6px;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px;
-    cursor: pointer;
-    text-transform: uppercase;
-    text-align: center;
-    transition: all 0.2s ease;
-  }
-  .filter-btn.active, .filter-btn:hover {
-    background-color: var(--accent-color);
-    color: #ffffff;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 10px rgba(0, 255, 170, 0.2);
-  }
-  .action-row {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .toggle-btn, .theme-btn, .sort-btn {
-    flex: 1;
-    min-width: 100px;
-    padding: 10px;
-    background-color: var(--btn-bg);
-    border: 1px solid var(--container-border);
-    color: var(--accent-color);
-    border-radius: 6px;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 13px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.2s ease;
-  }
-  .toggle-btn:hover, .theme-btn:hover, .sort-btn:hover {
-    background-color: var(--accent-color);
-    color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 255, 170, 0.3);
-  }
-  .stats-counter {
-    font-size: 13px;
-    color: var(--btn-text);
-    margin-bottom: 10px;
-    text-align: right;
-    letter-spacing: 1px;
-  }
-  .guide-container {
-    background-color: var(--container-bg);
-    border-radius: 12px;
-    border: 1px solid var(--container-border);
-    padding: 12px 15px;
-    backdrop-filter: blur(4px);
-    margin-bottom: 20px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-  }
-  .guide-header {
-    cursor: pointer;
-    color: var(--accent-color);
-    font-size: 14px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .guide-content {
-    display: none;
-    margin-top: 10px;
-    font-size: 13px;
-    line-height: 1.5;
-    color: var(--text-color);
-    border-top: 1px solid var(--container-border);
-    padding-top: 8px;
-  }
-  .guide-content.show {
-    display: block;
-  }
-  .table-container {
-    width: 100%;
-    overflow-x: auto;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    background-color: var(--container-bg); 
-    backdrop-filter: blur(4px); 
-    border: 1px solid var(--container-border);
-    margin-bottom: 25px;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    text-align: center;
-    min-width: 550px;
-  }
-  th {
-    background-color: var(--table-header-bg);
-    color: var(--header-color);
-    padding: 12px 8px;
-    font-size: 13px;
-    letter-spacing: 1px;
-    border-bottom: 2px solid var(--container-border);
-    text-transform: uppercase;
-  }
-  td {
-    padding: 12px 8px;
-    border-bottom: 1px solid var(--container-border);
-    vertical-align: middle;
-  }
-  tr:nth-child(even) {
-    background-color: var(--row-even); 
-  }
-  tr:nth-child(odd) {
-    background-color: transparent; 
-  }
-  tr:hover {
-    background-color: var(--row-hover); 
-  }
-  tr:last-child td {
-    border-bottom: none;
-  }
-  .color-block {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-weight: 700;
-    color: black;
-    text-shadow: 1px 1px 0px rgba(255,255,255,0.4);
-    margin: 3px 0;
-    width: 90%;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.1);
-    font-size: 13px;
-  }
-  .dark-text { 
-    color: #ffffff; 
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.9); 
-  }
-  .combo-ids, .combo-name {
-    cursor: pointer;
-    transition: color 0.2s ease;
-  }
-  .combo-ids:hover, .combo-name:hover {
-    color: var(--accent-color) !important;
-  }
-  .combo-ids { 
-    color: var(--btn-text); 
-    font-weight: 800; 
-    font-size: 15px;
-    white-space: nowrap;
-  }
-  .combo-name {
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    color: var(--header-color);
-    font-size: 14px;
-  }
-  .alt-name {
-    color: var(--btn-text);
-    font-style: italic;
-    font-size: 13px;
-  }
-  .variant-note {
-    font-size: 11px;
-    color: #00ffaa;
-    margin-top: 4px;
-    font-style: italic;
-  }
-  /* Notes Section Styling */
-  .notes-container {
-    background-color: var(--container-bg);
-    border-radius: 12px;
-    border: 1px solid var(--container-border);
-    padding: 15px;
-    backdrop-filter: blur(4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    margin-bottom: 30px;
-  }
-  .notes-container h3 {
-    margin-top: 0;
-    color: var(--accent-color);
-    font-size: 16px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    border-bottom: 1px solid var(--container-border);
-    padding-bottom: 8px;
-  }
-  .notes-subtitle {
-    font-size: 12px;
-    color: var(--btn-text);
-    margin-bottom: 10px;
-    font-style: italic;
-    line-height: 1.5;
-  }
-  .mobile-warning {
-    display: inline-block;
-    color: #ff6b6b;
-    font-weight: bold;
-    margin-top: 6px;
-  }
-  #suggestionInput {
-    width: 100%;
-    height: 110px;
-    box-sizing: border-box;
-    background-color: var(--input-bg);
-    border: 1px solid var(--container-border);
-    border-radius: 6px;
-    color: var(--text-color);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 14px;
-    padding: 10px;
-    resize: vertical;
-    outline: none;
-  }
-  #suggestionInput::placeholder {
-    color: #6c757d;
-  }
-  
-  /* Dynamic Footer Layout for Button & Links */
-  .form-footer {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    margin-top: 8px;
-  }
-  .links-group {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-  }
-
-  /* Toast Notification */
-  #toast {
-    visibility: hidden;
-    min-width: 200px;
-    background-color: rgba(0, 0, 0, 0.9);
-    color: #00ffaa;
-    text-align: center;
-    border-radius: 6px;
-    padding: 10px;
-    position: fixed;
-    z-index: 1000;
-    left: 50%;
-    bottom: 30px;
-    transform: translateX(-50%);
-    border: 1px solid #00ffaa;
-    font-family: 'Share Tech Mono', monospace;
-    box-shadow: 0 0 15px rgba(0, 255, 170, 0.4);
-  }
-  #toast.show {
-    visibility: visible;
-    animation: fadein 0.3s, fadeout 0.3s 1.2s;
-  }
-  @keyframes fadein {
-    from { bottom: 0; opacity: 0; }
-    to { bottom: 30px; opacity: 1; }
-  }
-  @keyframes fadeout {
-    from { bottom: 30px; opacity: 1; }
-    to { bottom: 0; opacity: 0; }
-  }
-</style>
+<link rel="stylesheet" href="./app.css">
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#07151d">
+<link rel="icon" href="./icon-192.png" sizes="192x192">
 </head>
 <body>
+<main class="app-shell">
+  <header class="masthead">
+    <div class="eyebrow">ARK / Community Field Guide</div>
+    <h1>ARK Color Combinations</h1>
+    <p class="mission-statement">A living, community-driven dictionary for ARK color combos. Know a different alt-name for a color combo or I'm missing some? Submit&nbsp;it&nbsp;below!</p>
+  </header>
 
-<h1>ARK COLOR COMBINATIONS</h1>
-<div class="mission-statement">
-  A living, community-driven dictionary for ARK color combos. Know a different alt-name for a color combo or I'm missing some? Submit&nbsp;it&nbsp;below!
-</div>
-
-<!-- Search, Filters, View Toggle & Theme Switcher -->
-<div class="controls-container">
-  <input type="text" id="searchBox" placeholder="Search combinations, colors, or names..." onkeyup="filterTable()">
-  <div class="filter-buttons">
-    <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
-    <button class="filter-btn" onclick="setFilter('2', this)">Duos (2)</button>
-    <button class="filter-btn" onclick="setFilter('3', this)">Trios (3)</button>
-    <button class="filter-btn" onclick="setFilter('4', this)">Quads (4)</button>
-  </div>
-  <div class="action-row">
-    <button class="sort-btn" id="sortToggleBtn" onclick="toggleSort()">Sort: Default</button>
-    <button class="toggle-btn" id="viewToggleBtn" onclick="toggleView()">Compact View</button>
-    <button class="theme-btn" id="themeToggleBtn" onclick="toggleTheme()">Light Theme</button>
-  </div>
-</div>
-
-<!-- Quick Stats Counter -->
-<div class="stats-counter" id="statsCounter">Showing all combinations</div>
-
-<!-- Region Mapping Reference Guide Accordion -->
-<div class="guide-container">
-  <div class="guide-header" onclick="toggleGuide()">
-    <span>📖 Quick ARK Color Regions Guide</span>
-    <span id="guideArrow">▼</span>
-  </div>
-  <div class="guide-content" id="guideContent">
-    <strong>Region 0:</strong> Usually main body / torso.<br>
-    <strong>Region 1:</strong> Usually underbelly / secondary accents.<br>
-    <strong>Region 2:</strong> Wings, fins, or stripe markings.<br>
-    <strong>Region 3:</strong> Mane, sail, or back feathers.<br>
-    <strong>Region 4:</strong> Leg markings / horns / plates.<br>
-    <strong>Region 5:</strong> Face details / specialized accents.
-  </div>
-</div>
-
-<div class="table-container">
-  <table id="comboTable">
-    <thead>
-      <tr>
-        <th>Combinations</th>
-        <th id="colorsHeader">Colors</th>
-        <th>Combo Names</th>
-        <th>Alternative Names</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Injected via JS -->
-    </tbody>
-  </table>
-</div>
-
-<!-- Missing Combos & Suggestions Panel with Discord Webhook -->
-<div class="notes-container">
-  <h3>Missing Combos & Suggestions</h3>
-  <div class="notes-subtitle">
-    Drop any missing color combinations or feedback below!<br>
-    <span class="mobile-warning">📱 On Mobile? Make sure to scroll the table all the way to the right to check Alternative Names before submitting!</span>
-  </div>
-  
-  <form id="suggestionForm" onsubmit="sendToDiscord(event)">
-    <textarea id="suggestionInput" placeholder="Type your suggestion here..." required></textarea>
-    <div class="form-footer">
-      <button type="submit" style="padding: 9px 16px; background-color: var(--accent-color); color: #000000; border: none; border-radius: 6px; cursor: pointer; font-family: 'Share Tech Mono', monospace; font-weight: bold; text-transform: uppercase;">Send to Discord</button>
-      
-      <!-- Responsive Links Group -->
-      <div class="links-group">
-        <a href="https://www.arkimplant.com/dinos?species=rex" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: none; font-size: 13px; font-weight: bold;">ARK Implant Tool &rarr;</a>
-        <a href="https://arkutils.netlify.app/tools/howmanyfemales" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color); text-decoration: none; font-size: 13px; font-weight: bold;">Mutation Probability &rarr;</a>
+  <section class="controls-container panel" aria-label="Explore combinations">
+    <div class="search-field">
+      <label class="control-label" for="searchBox">Search the dictionary</label>
+      <input type="search" id="searchBox" placeholder="Search combinations, colors, or names..." onkeyup="filterTable()">
+    </div>
+    <div class="controls-bottom">
+      <div class="control-group">
+        <span class="control-label">Colors per combo</span>
+        <div class="filter-buttons">
+          <button type="button" class="filter-btn active" onclick="setFilter('all', this)">All</button>
+          <button type="button" class="filter-btn" onclick="setFilter('2', this)">Duos (2)</button>
+          <button type="button" class="filter-btn" onclick="setFilter('3', this)">Trios (3)</button>
+          <button type="button" class="filter-btn" onclick="setFilter('4', this)">Quads (4)</button>
+        </div>
+      </div>
+      <div class="control-group">
+        <span class="control-label">Display options</span>
+        <div class="action-row">
+          <button type="button" class="sort-btn" id="sortToggleBtn" onclick="toggleSort()">Sort: Default</button>
+          <button type="button" class="toggle-btn" id="viewToggleBtn" onclick="toggleView()">Compact View</button>
+          <button type="button" class="theme-btn" id="themeToggleBtn" onclick="toggleTheme()">Light Theme</button>
+        </div>
       </div>
     </div>
-  </form>
-  <div id="formStatus" style="font-size: 12px; margin-top: 6px; color: #00ffaa;"></div>
-</div>
+  </section>
 
-<!-- Copy Notification Toast -->
-<div id="toast">Copied to Clipboard!</div>
+  <section class="guide-container panel" aria-label="ARK color region reference">
+    <button type="button" class="guide-header" onclick="toggleGuide()">
+      <span>▤ &nbsp;Quick ARK Color Regions Guide</span><span id="guideArrow">▼</span>
+    </button>
+    <div class="guide-content" id="guideContent">
+      <strong>Region 0:</strong> Usually main body / torso.<br>
+      <strong>Region 1:</strong> Usually underbelly / secondary accents.<br>
+      <strong>Region 2:</strong> Wings, fins, or stripe markings.<br>
+      <strong>Region 3:</strong> Mane, sail, or back feathers.<br>
+      <strong>Region 4:</strong> Leg markings / horns / plates.<br>
+      <strong>Region 5:</strong> Face details / specialized accents.
+    </div>
+  </section>
 
+  <div class="results-head"><div><span class="section-kicker">Field records</span><h2>Combination Index</h2></div><div class="stats-counter" id="statsCounter">Showing all combinations</div></div>
+  <div class="island-stage">
+  <div class="table-container panel" role="region" aria-label="Color combinations displayed on island cards" tabindex="0">
+    <table id="comboTable">
+      <thead><tr><th>Combinations</th><th id="colorsHeader">Colors</th><th>Combo Names</th><th>Alternative Names</th></tr></thead>
+      <tbody><!-- Injected via JS --></tbody>
+    </table>
+  </div>
+
+  </div>
+
+  <section class="notes-container panel">
+    <div class="section-kicker">Community signal</div>
+    <h3>Missing Combos &amp; Suggestions</h3>
+    <div class="notes-subtitle">Drop any missing color combinations or feedback below!<br>
+      <span class="mobile-warning">📱 On Mobile? Check the Alternative Names in each combination before submitting!</span>
+    </div>
+    <form id="suggestionForm" onsubmit="sendToDiscord(event)">
+      <textarea id="suggestionInput" aria-label="Your suggestion" placeholder="Type your suggestion here..." required></textarea>
+      <div class="form-footer">
+        <button class="submit-btn" type="submit">Send to Discord</button>
+        <div class="links-group">
+          <a href="https://www.arkimplant.com/dinos?species=rex" target="_blank" rel="noopener noreferrer">ARK Implant Tool &rarr;</a>
+          <a href="https://arkutils.netlify.app/tools/howmanyfemales" target="_blank" rel="noopener noreferrer">Mutation Probability &rarr;</a>
+        </div>
+      </div>
+    </form>
+    <div id="formStatus"></div>
+  </section>
+</main>
+<div id="toast" role="status" aria-live="polite">Copied to Clipboard!</div>
+<script src="./suggestions-config.js"></script>
 <script>
   const combos = [
     // --- 2-COLOR COMBOS (DUOS) ---
@@ -590,7 +230,7 @@
         colorsHtml = combo.colors.map(c => c.name).join("<br>");
       }
 
-      let noteHtml = combo.variantNote ? `<div class="variant-note">💡 ${combo.variantNote}</div>` : '';
+      let noteHtml = combo.variantNote ? `<div class="variant-note">${combo.variantNote}</div>` : '';
 
       // Update Pink Lemonade (4 / 6) to use 68 as main and 6 as alt
       let currentAltName = combo.altName;
@@ -605,14 +245,18 @@
         } else {
           colorsHtml = "4 - Yellow<br>68 - Deep Pink";
         }
-        noteHtml = `<div class="variant-note">💡 ${currentVariantNote}</div>`;
+        noteHtml = `<div class="variant-note">${currentVariantNote}</div>`;
       }
+
+      const altHtml = currentAltName
+        ? currentAltName.split(/\s*\/\s*/).map(name => `<span class="alt-chip" title="${name}">${name}</span>`).join('<span class="alt-separator"> / </span>')
+        : '';
 
       tr.innerHTML = `
         <td class="combo-ids" onclick="copyText('${combo.ids}')" title="Tap to copy">${combo.ids}</td>
         <td>${colorsHtml}</td>
         <td class="combo-name" onclick="copyText('${combo.name}')" title="Tap to copy">${combo.name}</td>
-        <td class="alt-name">${currentAltName}${noteHtml}</td>
+        <td class="alt-name ${currentAltName ? '' : 'no-alt'}">${altHtml}${noteHtml}</td>
       `;
       tbody.appendChild(tr);
     });
@@ -713,17 +357,20 @@
     const statusDiv = document.getElementById('formStatus');
     const message = inputField.value.trim();
     
-    const webhookUrl = 'https://discord.com/api/webhooks/1532205039995719691/K25p2iV4grQb51gOt9Kxlfv7eRcpI6R3fgpROPgeO2qypcRjlV4UGUbha7VN_33R8mvD';
+    const suggestionEndpoint = window.ARK_SUGGESTION_ENDPOINT;
     
     if (!message) return;
+    if (!suggestionEndpoint || !suggestionEndpoint.startsWith('https://')) {
+      statusDiv.textContent = 'Suggestions are temporarily unavailable.';
+      statusDiv.style.color = '#ff6b6b';
+      return;
+    }
 
     try {
-      const response = await fetch(webhookUrl, {
+      const response = await fetch(suggestionEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          content: `💡 **New Color Tool Feedback:**\n> ${message}`
-        })
+        body: JSON.stringify({ message })
       });
 
       if (response.ok) {
@@ -743,6 +390,11 @@
 
   // Initial render on load
   renderTable(combos);
+</script>
+<script>
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(console.error));
+}
 </script>
 </body>
 </html>
