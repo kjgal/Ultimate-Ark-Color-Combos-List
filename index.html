@@ -12,6 +12,9 @@
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#07151d">
 <link rel="icon" href="./icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
 <main class="app-shell">
@@ -19,6 +22,10 @@
     <div class="eyebrow">ARK / Community Field Guide</div>
     <h1>ARK Color Combinations</h1>
     <p class="mission-statement">A living, community-driven dictionary for ARK color combos. Know a different alt-name for a color combo or I'm missing some? Submit&nbsp;it&nbsp;below!</p>
+    <div class="install-wrap">
+      <button type="button" class="install-btn" id="installAppBtn">↓ &nbsp; Install App</button>
+      <p class="install-help" id="installHelp" role="status" hidden></p>
+    </div>
   </header>
 
   <section class="controls-container panel" aria-label="Explore combinations">
@@ -395,6 +402,43 @@
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
   addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(console.error));
 }
+</script>
+<script>
+(() => {
+  const button = document.getElementById('installAppBtn');
+  const help = document.getElementById('installHelp');
+  let installPrompt;
+
+  const installed = () => window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  if (installed()) button.hidden = true;
+
+  window.addEventListener('beforeinstallprompt', event => {
+    event.preventDefault();
+    installPrompt = event;
+    if (!installed()) button.hidden = false;
+  });
+  window.addEventListener('appinstalled', () => {
+    installPrompt = null;
+    button.hidden = true;
+    help.hidden = true;
+  });
+
+  button.addEventListener('click', async () => {
+    if (installPrompt) {
+      const prompt = installPrompt;
+      installPrompt = null;
+      await prompt.prompt();
+      const choice = await prompt.userChoice;
+      if (choice?.outcome === 'accepted') button.hidden = true;
+      return;
+    }
+    const ios = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    help.textContent = ios
+      ? 'In Safari, tap Share, then Add to Home Screen.'
+      : 'Open your browser menu and choose Install app or Add to Home screen.';
+    help.hidden = false;
+  });
+})();
 </script>
 </body>
 </html>
