@@ -25,7 +25,7 @@
     </div>
     <div class="eyebrow">ARK / Community Field Guide</div>
     <h1>ARK Color Combinations</h1>
-    <p class="mission-statement">A living, community-driven dictionary for ARK color combos. Know a different alt-name for a color combo or I'm missing some? Submit&nbsp;it&nbsp;below!</p>
+    <p class="mission-statement">A living, community-driven dictionary for ARK color combos. Have an alternative name or a missing combo? Check the list first, then share its color IDs and name through Community Signal below.</p>
   </header>
 
   <section class="controls-container panel" aria-label="Explore combinations">
@@ -81,8 +81,8 @@
 
   <section class="notes-container panel">
     <div class="section-kicker">Community signal</div>
-    <h3>Missing Combos &amp; Suggestions</h3>
-    <div class="notes-subtitle">Drop any missing color combinations or feedback below!<br>
+    <h3>Missing Combos &amp; Alternative Names</h3>
+    <div class="notes-subtitle">Share a missing color combination or alternative name below. Please include the color IDs.<br>
       <span class="mobile-warning">📱 On Mobile? Check the Alternative Names in each combination before submitting!</span>
     </div>
     <form id="suggestionForm" onsubmit="sendToDiscord(event)">
@@ -104,7 +104,7 @@
   const combos = [
     // --- 2-COLOR COMBOS (DUOS) ---
     { ids: "1 / 79", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "DEADPOOL", altName: "", variantNote: "Can use 131 instead" },
-    { ids: "2 / 79", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "SUB-ZERO", altName: "", variantNote: "Can use 195 or 187 instead" },
+    { ids: "2 / 79", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "SUB-ZERO", altName: "", variantNote: "Can use 195, 187, or 194 instead" },
     { ids: "3 / 79", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "MONSTER", altName: "", variantNote: "Can use 88 for Toxic Monster instead" },
     { ids: "88 / 79", count: 2, colors: [{ name: "88 - Lemon Lime", hex: "#acfe44", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "TOXIC MONSTER", altName: "", variantNote: "Can use 3 for regular Monster instead" },
     { ids: "4 / 79", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "BATMAN", altName: "BUMBLE-BEE", variantNote: "" },
@@ -121,21 +121,23 @@
     { ids: "245 / 79", count: 2, colors: [{ name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }, { name: "79 - Actual Black", hex: "#000000", darkText: true }], name: "ANUBIS", altName: "ROYAL / VIP", variantNote: "" },
     { ids: "245 / 5", count: 2, colors: [{ name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }, { name: "5 - Cyan", hex: "#00ffff", darkText: false }], name: "BLUE RAZZ LEMONADE", altName: "", variantNote: "" },
     { ids: "1 / 36", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "ALPHA", altName: "PENNYWISE", variantNote: "" },
-    { ids: "2 / 36", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "PORCELAIN", altName: "TIDAL WAVE / TIDAL SPECKLE", variantNote: "Can use 195 instead of 2" },
+    { ids: "2 / 36", count: 2, colors: [{ name: "2 - Blue", hex: "#0000ff", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "PORCELAIN", altName: "TIDAL WAVE / TIDAL SPECKLE / SMURF", variantNote: "Can use 195 instead of 2" },
     { ids: "3 / 36", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "MATCHA", altName: "WHATSAPP / SPRITE", variantNote: "" },
     { ids: "4 / 36", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "ZEUS", altName: "HALO / ANGELIC / YELLOW SNOW", variantNote: "" },
     { ids: "5 / 36", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "FREEZE", altName: "ICEBREAKER / BLIZZARD / TIFFANY", variantNote: "" },
     { ids: "36 / 59", count: 2, colors: [{ name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "59 - Turquoise", hex: "#00c5ab", darkText: false }], name: "SEAFOAM", altName: "", variantNote: "" },
-    { ids: "6 / 36", count: 2, colors: [{ name: "6 - Magenta", hex: "#ff00ff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "MAGENTA SNOW", altName: "KEN / BARBIE", variantNote: "Can use 68 instead" },
+    { ids: "36 / 83", count: 2, colors: [{ name: "36 - Dino Albino", hex: "#ffffff", darkText: false }, { name: "83 - Lemon Lime", hex: "#a8ff44", darkText: false }], name: "LIME SORBET", altName: "", variantNote: "" },
+    { ids: "6 / 36", count: 2, colors: [{ name: "6 - Magenta", hex: "#ff00ff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "MAGENTA SNOW", altName: "BARBIE", variantNote: "Can use 68 instead" },
     { ids: "67 / 36", count: 2, colors: [{ name: "67 - Light Pink", hex: "#ebb0ff", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "CHERRY BLOSSOM", altName: "", variantNote: "" },
-    { ids: "68 / 36", count: 2, colors: [{ name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "BARBIE", altName: "KEN", variantNote: "" },
+    { ids: "68 / 36", count: 2, colors: [{ name: "68 - Deep Pink", hex: "#ff1493", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "BARBIE", altName: "", variantNote: "" },
     { ids: "75 / 36", count: 2, colors: [{ name: "75 - Orange", hex: "#ffa500", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "ORANGESICLE", altName: "DREAMSICLE / SOLERO / KOI", variantNote: "Can use 139 instead" },
     { ids: "96 / 36", count: 2, colors: [{ name: "96 - Glacial", hex: "#87ceeb", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "WINTER", altName: "GLACIAL SNOW", variantNote: "" },
     { ids: "187 / 36", count: 2, colors: [{ name: "187 - Azure Coloring", hex: "#007fff", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "ICED", altName: "SKY EMPEROR", variantNote: "" },
     { ids: "203 / 36", count: 2, colors: [{ name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "FREEZA", altName: "", variantNote: "" },
-    { ids: "245 / 36", count: 2, colors: [{ name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "GILDED MARBLE", altName: "", variantNote: "" },
+    { ids: "245 / 36", count: 2, colors: [{ name: "245 - Gold Coloring", hex: "#ffd700", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "GILDED MARBLE", altName: "HALO", variantNote: "" },
     { ids: "212 / 36", count: 2, colors: [{ name: "212 - Pink Coloring", hex: "#ff69b4", darkText: false }, { name: "36 - Dino Albino", hex: "#ffffff", darkText: false }], name: "STRAWBERRY MILK", altName: "PASTEL BARBIE", variantNote: "" },
-    { ids: "5 / 202", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "202 - Indigo", hex: "#683492", darkText: true }], name: "WINTERBERRY", altName: "", variantNote: "" },
+    { ids: "5 / 202", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "202 - Indigo", hex: "#683492", darkText: true }], name: "WINTERBERRY", altName: "AMETHYST", variantNote: "Can use 203 instead of 202" },
+    { ids: "5 / 203", count: 2, colors: [{ name: "5 - Cyan", hex: "#00ffff", darkText: false }, { name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }], name: "LUCID CANDY", altName: "", variantNote: "" },
     { ids: "1 / 2", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }], name: "SPIDERMAN", altName: "SUPERMAN", variantNote: "" },
     { ids: "1 / 4", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }], name: "IRON MAN", altName: "FLASH", variantNote: "Can use 131 instead of 1, or 245 instead of 4" },
     { ids: "1 / 5", count: 2, colors: [{ name: "1 - Red", hex: "#ff0000", darkText: false }, { name: "5 - Cyan", hex: "#00ffff", darkText: false }], name: "SLUSHY", altName: "", variantNote: "" },
@@ -149,7 +151,7 @@
     { ids: "67 / 96", count: 2, colors: [{ name: "67 - Light Pink", hex: "#ebb0ff", darkText: false }, { name: "96 - Glacial", hex: "#87ceeb", darkText: false }], name: "FAIRY FLOSS", altName: "", variantNote: "" },
     { ids: "54 / 76", count: 2, colors: [{ name: "54 - Dino Deep Blue", hex: "#1c2638", darkText: true }, { name: "76 - Peach", hex: "#ffdab9", darkText: false }], name: "SURFBOARD", altName: "", variantNote: "" },
     { ids: "3 / 4", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "4 - Yellow", hex: "#ffff00", darkText: false }], name: "LEMON LIME", altName: "", variantNote: "" },
-    { ids: "3 / 68", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "68 - Deep Pink", hex: "#ff1493", darkText: false }], name: "WATERMELON", altName: "RASPBERRY TWIST", variantNote: "Can use 218 instead of 68" },
+    { ids: "3 / 68", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "68 - Deep Pink", hex: "#ff1493", darkText: false }], name: "WATERMELON", altName: "RASPBERRY TWIST", variantNote: "Can use 218 or 6 instead of 68" },
     { ids: "3 / 203", count: 2, colors: [{ name: "3 - Green", hex: "#00ff00", darkText: false }, { name: "203 - Violet Coloring", hex: "#8a2be2", darkText: true }], name: "JOKER", altName: "", variantNote: "" },
     { ids: "75 / 2", count: 2, colors: [{ name: "75 - Orange", hex: "#ffa500", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }], name: "GOKU", altName: "DRAGON BALL / NERF", variantNote: "" },
     { ids: "4 / 2", count: 2, colors: [{ name: "4 - Yellow", hex: "#ffff00", darkText: false }, { name: "2 - Blue", hex: "#0000ff", darkText: true }], name: "WOLVERINE", altName: "", variantNote: "" },
@@ -205,6 +207,7 @@
     
     if (idArray.includes("3")) notes.push("Can use 163 for 3");
     if (idArray.includes("79")) notes.push("Can use 224 for 79");
+    if (idArray.includes("5")) notes.push("Can use 179 for 5");
     if (idArray.includes("203")) notes.push("Can use 201 or 202 for 203");
     
     if (notes.length > 0) {
