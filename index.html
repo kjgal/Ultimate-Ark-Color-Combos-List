@@ -6,8 +6,13 @@
 <title>ARK Color Combinations</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
+<script>
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('motion-ready');
+  }
+</script>
 <link rel="stylesheet" href="./app.css">
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#07151d">
@@ -68,7 +73,7 @@
     </div>
   </section>
 
-  <div class="results-head"><div><span class="section-kicker">Field records</span><h2>Combination Index</h2></div><div class="stats-counter" id="statsCounter">Showing all combinations</div></div>
+  <div class="results-head"><div><span class="section-kicker">Field records</span><h2 class="type-on-view"><span class="terminal-type" style="--terminal-width:17ch;--terminal-steps:17">Combination Index</span><span class="terminal-cursor" aria-hidden="true"></span></h2></div><div class="stats-counter" id="statsCounter">Showing all combinations</div></div>
   <div class="island-stage">
   <div class="table-container panel" role="region" aria-label="Color combinations displayed on island cards" tabindex="0">
     <table id="comboTable">
@@ -80,7 +85,7 @@
   </div>
 
   <section class="notes-container panel">
-    <div class="section-kicker">Community signal</div>
+    <div class="section-kicker type-on-view"><span class="terminal-type" style="--terminal-width:16ch;--terminal-steps:16">Community signal</span><span class="terminal-cursor" aria-hidden="true"></span></div>
     <h3>Missing Combos &amp; Alternative Names</h3>
     <div class="notes-subtitle">Share a missing color combination or alternative name below. Please include the color IDs.<br>
       <span class="mobile-warning">📱 On Mobile? Check the Alternative Names in each combination before submitting!</span>
@@ -449,6 +454,26 @@ if ('serviceWorker' in navigator && location.protocol !== 'file:') {
     help.hidden = false;
   });
 })();
+</script>
+<script>
+  // Decorative heading reveal, separate from combination and suggestion logic.
+  if (document.documentElement.classList.contains('motion-ready')) {
+    const headingObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('type-visible');
+          headingObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.2 });
+    document.fonts.ready.then(() => {
+      document.querySelectorAll('.type-on-view').forEach(heading => {
+        const text = heading.querySelector('.terminal-type');
+        if (text) text.style.setProperty('--terminal-width', `${text.scrollWidth + 2}px`);
+        headingObserver.observe(heading);
+      });
+    });
+  }
 </script>
 </body>
 </html>
