@@ -415,7 +415,7 @@
 </script>
 <script>
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-  addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(console.error));
+  addEventListener('load', () => navigator.serviceWorker.register('./sw.js').then(registration => registration.update()).catch(console.error));
 }
 </script>
 <script>
