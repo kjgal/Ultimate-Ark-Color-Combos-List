@@ -1,5 +1,5 @@
 const CACHE_NAME = 'ark-color-ledger-v55';
-const ASSETS = ['./', './index.html', './app.css', './suggestions-config.js', './woodland-cliff-v2.webp', './woodland-cliff-wide-v2.webp', './manifest.json', './icon-crystal-192.png', './icon-crystal-512.png'];
+const ASSETS = ['./', './index.html', './app.css?v=55', './suggestions-config.js', './woodland-cliff-v2.webp', './woodland-cliff-wide-v2.webp', './manifest.json', './icon-crystal-192.png', './icon-crystal-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
